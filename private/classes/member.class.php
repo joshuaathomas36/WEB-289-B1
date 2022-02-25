@@ -19,7 +19,7 @@ class member extends databaseobject {
   public function __construct($args=[]) {
     $this->first_name = $args['first_name'] ?? '';
     $this->last_name = $args['last_name'] ?? '';
-    $this->user_level = $args['user_level'] ?? 'm';
+    $this->user_level = $args['user_level'] ?? 'M';
     $this->email = $args['email'] ?? '';
     $this->username = $args['username'] ?? '';
     $this->password = $args['password'] ?? '';

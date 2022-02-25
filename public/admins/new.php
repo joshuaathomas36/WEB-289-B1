@@ -6,27 +6,27 @@ if(is_post_request()) {
 
   // Create record using post parameters
   $args = $_POST['member'];
-  $member = new Member($args);
+  $member = new member($args);
   $result = $member->save();
 
   if($result === true) {
     $new_id = $member->id;
     $_SESSION['message'] = 'The member was created successfully.';
-    redirect_to(url_for('members/show.php?id=' . $new_id));
+    redirect_to(url_for('admins/show.php?id=' . $new_id));
   } else {
     // show errors
   }
 
 } else {
   // display the form
-  $member = new Member;
+  $member = new member;
 }
 
 $session->verify_user_level();
 ?>
 
 <?php $page_title = 'Create a Member'; ?>
-<?php include(SHARED_PATH . '/member-header.php'); ?>
+<?php include(SHARED_PATH . '/admin-header.php'); ?>
 
   <a href="<?=url_for('members/index.php'); ?>">&laquo; Back to List</a>
 
@@ -34,7 +34,7 @@ $session->verify_user_level();
 
     <?=display_errors($member->errors); ?>
 
-    <form action="<?=url_for('members/new.php'); ?>" method="post">
+    <form action="<?=url_for('admins/new.php'); ?>" method="post">
 
       <?php include('form_fields.php'); ?>
 

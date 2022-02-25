@@ -82,10 +82,9 @@ class session {
  * @param   [type]  $user_level  [$user_level description]
  */
     static public function verify_user_level() {
-        //isset($this->user_level);
-        if($_SESSION['user_level'] == 'a') {
+        if($_SESSION['user_level'] == 'A') {
         
-        } elseif($_SESSION['user_level'] == 'm') {
+        } elseif($_SESSION['user_level'] == 'M') {
             redirect_to(url_for('/members/index.php'));
         } else {
             $errors[] = "Login was unsuccessful, please try again.";

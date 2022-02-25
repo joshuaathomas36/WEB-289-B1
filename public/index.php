@@ -4,7 +4,7 @@ $page_title = 'Is database connected checker';
 include(SHARED_PATH . '/header.php'); 
 ?>
 
-<p><a href="members/login.php">Log in</a> or <a href="members/new.php">Become a Member</a></p>
+<p><a href="login/login.php">Log in</a> or <a href="login/signup.php">Become a Member</a></p>
 
 <h2>Foody's Delight: Is database connected checker</h2>
 
