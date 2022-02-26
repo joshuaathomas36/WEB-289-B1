@@ -9,13 +9,13 @@ $user_level = '';
 if(is_post_request()) {
 
   $username = $_POST['username'] ?? '';
-  $password = $_POST['password'] ?? '';
+  $pass = $_POST['pass'] ?? '';
 
   // Validations
   if(is_blank($username)) {
     $errors[] = "Username cannot be blank.";
   }
-  if(is_blank($password)) {
+  if(is_blank($pass)) {
     $errors[] = "Password cannot be blank.";
   }
 
@@ -23,7 +23,7 @@ if(is_post_request()) {
   if(empty($errors)) {
     $member = member::find_by_username($username);
     // test if admin found and password is correct
-    if($member != false && $member->verify_password($password)) {
+    if($member != false && $member->verify_password($pass)) {
       // Mark admin as logged in
       // Review this line
       $session->login($member);
@@ -49,7 +49,7 @@ if(is_post_request()) {
     Username:<br>
     <input type="text" name="username" value="<?= h($username); ?>" /><br />
     Password:<br>
-    <input type="password" name="password" value="" /><br>
+    <input type="password" name="pass" value="" /><br>
     <input type="submit" name="submit" value="Submit"  />
   </form>
 

@@ -80,6 +80,8 @@ class databaseobject{
     $this->validate();
     if(!empty($this->errors)) {return false; }
 
+    $this->set_hashed_password();
+
     $attributes = $this->sanitized_attributes();
     $sql = "INSERT INTO " . static::$table_name . " (";
     $sql .= join(', ', array_keys($attributes));

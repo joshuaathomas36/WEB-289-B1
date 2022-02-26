@@ -28,7 +28,7 @@ $session->verify_user_level();
 <?php $page_title = 'Create a Member'; ?>
 <?php include(SHARED_PATH . '/admin-header.php'); ?>
 
-  <a href="<?=url_for('members/index.php'); ?>">&laquo; Back to List</a>
+  <a href="<?=url_for('admins/index.php'); ?>">&laquo; Back to List</a>
 
     <h1>Create Member</h1>
 

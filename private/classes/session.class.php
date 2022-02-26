@@ -82,7 +82,9 @@ class session {
  * @param   [type]  $user_level  [$user_level description]
  */
     static public function verify_user_level() {
-        if($_SESSION['user_level'] == 'A') {
+        if($_SESSION['user_level'] == 'S') {
+        
+        } elseif($_SESSION['user_level'] == 'A') {
         
         } elseif($_SESSION['user_level'] == 'M') {
             redirect_to(url_for('/members/index.php'));
