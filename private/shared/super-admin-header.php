@@ -18,12 +18,14 @@
 
     <navigation>
       <ul>
-       <?php
-        if($session->is_logged_in()) { ?>
-            <li>User: <?= $session->username; ?></li>
-            <li><a href="<?= url_for('members/logout.php'); ?>">Logout</li>
-
-        <?php } //else { redirect_to(url_for('members/login.php')); } ?>
+        <?php if($session->is_logged_in()) { 
+          if($session->user_level == 'S') {
+        ?>
+          <li>User: <?= $session->username; ?></li>
+          <li><a href="<?= url_for('login/logout.php'); ?>">Logout</li>
+        <?php } //else { redirect_to(url_for('login/login.php')); }
+        } //else { redirect_to(url_for('login/login.php')); } ?>
       </ul>
     </navigation>
   
+    <?php echo display_session_message(); ?>

@@ -21,9 +21,9 @@
        <?php
         if($session->is_logged_in()) { ?>
             <li>User: <?= $session->username; ?></li>
-            <li><a href="<?= url_for('members/logout.php'); ?>">Logout</li>
+            <li><a href="<?= url_for('login/logout.php'); ?>">Logout</li>
 
-        <?php } //else { redirect_to(url_for('members/login.php')); } ?>
+        <?php } //else { redirect_to(url_for('login/login.php')); } ?>
       </ul>
     </navigation>
   

@@ -1,5 +1,5 @@
 <?php 
-  require_once('../../private/initialize.php'); 
+  require_once('../../../private/initialize.php'); 
   $id = $_GET['id'] ?? '1'; // PHP > 7.0
   $member = member::find_by_id($id);
   $page_title = 'Show All Users: ' . h($member->full_name());
@@ -7,10 +7,15 @@
   $session->verify_user_level();
 ?>
 
-  <a class="back-link" href="<?= url_for('admins/index.php'); ?>">&laquo; Back to List</a>
+  <a class="back-link" href="index.php">&laquo; Back to List</a>
 
     <h1>member: <?= h($member->full_name()); ?></h1>
 
+      <dl>
+        <dt>User ID</dt>
+        <dd><?= h($member->user_id); ?></dd>
+      </dl>
+      <dl>
       <dl>
         <dt>First name</dt>
         <dd><?= h($member->first_name); ?></dd>
@@ -27,6 +32,11 @@
         <dt>Username</dt>
         <dd><?= h($member->username); ?></dd>
       </dl>
+      <dl>
+        <dt>User Level</dt>
+        <dd><?= h($member->user_level); ?></dd>
+      </dl>
+      <dl>
     </div>
 
   </div>

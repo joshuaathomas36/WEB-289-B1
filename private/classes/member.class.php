@@ -131,9 +131,9 @@ class member extends databaseobject {
    */
   static public function check_user_level($user_level) {
     if($user_level == 'S') {
-      redirect_to(url_for('/super-admins/links.php'));
+      redirect_to(url_for('/super-admins/index.php'));
     } elseif($user_level == 'A') {
-      redirect_to(url_for('/admins/links.php'));
+      redirect_to(url_for('/admins/index.php'));
     } elseif($user_level == 'M') {
       redirect_to(url_for('/members/index.php'));
     } else {

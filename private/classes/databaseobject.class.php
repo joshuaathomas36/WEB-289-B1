@@ -28,15 +28,21 @@ class databaseobject{
     return $object_array;
   }
 
-  static public function find_all() {
+  static public function find_admins() {
     // where do we grab the $table_name? - Bird class
-    $sql = "SELECT * FROM " . static::$table_name;
+    $sql = "SELECT * FROM " . static::$table_name . " WHERE user_level='A'";
+    return static::find_by_sql($sql);
+  }
+
+  static public function find_members() {
+    // where do we grab the $table_name? - Bird class
+    $sql = "SELECT * FROM " . static::$table_name . " WHERE user_level='M'";
     return static::find_by_sql($sql);
   }
 
   static public function find_by_id($id) {
     $sql = "SELECT * FROM " . static::$table_name . " ";
-    $sql .= "WHERE id='" . self::$database->escape_string($id) . "'";
+    $sql .= "WHERE user_id='" . self::$database->escape_string($id) . "'";
     $obj_array = static::find_by_sql($sql);
     if(!empty($obj_array)) {
       return array_shift($obj_array);

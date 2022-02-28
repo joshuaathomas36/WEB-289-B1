@@ -99,8 +99,8 @@
   // * For existing records, provide current ID as second argument
   //   has_unique_username('johnqpublic', 4)
   function has_unique_username($username, $current_id="0") {
-    $member = Member::find_by_username($username);
-    if($member === false || $member->id == $current_id) {
+    $member = member::find_by_username($username);
+    if($member === false || $member->user_id == $current_id) {
       // is unique
       return true;
     } else {

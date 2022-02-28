@@ -5,6 +5,10 @@ if(!isset($member)) {
   redirect_to(url_for('/admins/index.php'));
 }
 $session->verify_user_level();
+
+// if($session->user_level == 'S' && $member->user_level == 'S'){
+//   redirect_to(url_for('/super-admins/admins-editor/index.php'));
+// }
 ?>
 
 <dl>
@@ -19,7 +23,12 @@ $session->verify_user_level();
 
 <dl>
   <dt>User Level</dt>
-  <dd><input type="text" name="member[user_level]" value="<?= h($member->user_level); ?>" /></dd>
+  <dd>
+    <select name="member[user_level]" value="<?= h($member->user_level); ?>">
+      <option value="M">M</option>
+      <option value="A">A</option>
+    </select>
+  </dd>
 </dl>
 
 <dl>
