@@ -17,8 +17,8 @@ class session {
       // protect against session fixation attacks
       session_regenerate_id();
 
-      $this->user_id = $user->id;
-      $_SESSION['user_id'] = $user->id;
+      $this->user_id = $user->user_id;
+      $_SESSION['user_id'] = $user->user_id;
             
       $this->username = $user->username;
       $_SESSION['username'] = $user->username;
@@ -41,9 +41,11 @@ class session {
     unset($_SESSION['user_id']);
     unset($_SESSION['username']);
     unset($_SESSION['last_login']);
+    unset($_SESSION['user_level']);
     unset($this->user_id);
     unset($this->username);
     unset($this->last_login);
+    unset($this->user_level);
     return true;
   }
 
@@ -51,6 +53,7 @@ class session {
     if(isset($_SESSION['user_id'])) {
       $this->user_id =  $_SESSION['user_id'];
       $this->username =  $_SESSION['username'];
+      $this->user_level =  $_SESSION['user_level'];
       $this->last_login =  $_SESSION['last_login'];
     }
   }

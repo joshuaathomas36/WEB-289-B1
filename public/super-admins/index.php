@@ -2,7 +2,6 @@
 require_once('../../private/initialize.php');
 $page_title = "Foody's Delight: Super Admin Menu";
 include(SHARED_PATH . '/super-admin-header.php'); 
-$members = member::find_all();
 $session->verify_super_admin_level();
 ?>
 

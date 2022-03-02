@@ -23,7 +23,7 @@
             <li>User: <?= $session->username; ?></li>
             <li><a href="<?= url_for('login/logout.php'); ?>">Logout</li>
 
-        <?php } //else { redirect_to(url_for('login/login.php')); } ?>
+        <?php } else { redirect_to(url_for('login/login.php')); } ?>
       </ul>
     </navigation>
   
