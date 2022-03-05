@@ -3,7 +3,7 @@ require_once('../private/initialize.php');
 $page_title = 'Is database connected checker';
 include(SHARED_PATH . '/header.php'); 
 
-$recipes = recipe::find_recipes(TRUE);
+$recipes = recipe::find_by_category(4);
 
 ?>
 
@@ -43,14 +43,5 @@ $recipes = recipe::find_recipes(TRUE);
     <?php } ?>
     </tr>
 </table>
-
-<?php foreach($recipes as $recipe) { 
-  $steps = $recipe->instructions($recipe->instructions);
-  $i = 1;
-  foreach($steps as $step) { 
-  ?>
-    <td>Step <?= h($i++); ?> <?= h($step); ?></td><br>
-<?php }} ?>
-
 
     <?php  include(SHARED_PATH . '/footer.php'); ?>
