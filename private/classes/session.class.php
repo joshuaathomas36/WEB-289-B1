@@ -1,7 +1,7 @@
 <?php
 
 class session {
-  private $user_id;
+  public $user_id;
   public $username;
   public $user_level;
   private $last_login;

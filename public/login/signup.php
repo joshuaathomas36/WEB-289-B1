@@ -27,6 +27,7 @@ if(is_post_request()) {
   include(SHARED_PATH . '/header.php'); 
 ?>
 
+<div id="wrapper">
   <a href="<?=url_for('index.php'); ?>">&laquo; Go Back</a>
 
     <h1>Become a Member</h1>
@@ -68,10 +69,7 @@ if(is_post_request()) {
       <div id="operations">
         <input type="submit" value="Sign up!" />
       </div>
-    </form>
-
-  </div>
-
+  </form>
 </div>
 
 <?php include(SHARED_PATH . '/footer.php'); ?>

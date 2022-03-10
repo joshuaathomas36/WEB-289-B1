@@ -10,20 +10,23 @@
   <body>
 
     <header>
+      <?php
+        if($session->is_logged_in()) { ?>
+          <p id="login">User: <?= $session->username; ?> <a class="button" href="<?= url_for('login/logout.php'); ?>">Logout</a> <a class="button" href="<?= url_for('members/account.php'); ?>">Account</a> <a class="button" href="<?= url_for('members/submitrecipe.php'); ?>">Submit Recipe</a></p>
+      <?php } else { redirect_to(url_for('login/login.php')); } ?>
       <h1>
-        <a href="<?= url_for('../public/index.php'); ?>">Foody's Delight</a>
+        <a href="<?= url_for('../public/members/index.php'); ?>">Foody's Delight</a>
       </h1>
-      <h2>Member's Area</h2>
     </header>
 
-    <navigation>
-      <ul>
-       <?php
-        if($session->is_logged_in()) { ?>
-            <li>User: <?= $session->username; ?></li>
-            <li><a href="<?= url_for('login/logout.php'); ?>">Logout</li>
-
-        <?php } else { redirect_to(url_for('login/login.php')); } ?>
-      </ul>
-    </navigation>
+    <nav>
+      <a href="<?= url_for('/members/index.php'); ?>">Home</a>
+      <?php 
+        $categorys = category::find_all(); 
+        foreach($categorys as $category) {
+          $link = strtolower($category->category_name)
+        ?>
+        <a href="<?= url_for('/members/' . $link . '.php'); ?>"><?= $category->category_name ?></a>
+      <?php } ?>
+    </nav>
   

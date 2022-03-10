@@ -3,6 +3,7 @@ require_once('../../private/initialize.php');
 
 $errors = [];
 $username = '';
+$pass = '';
 $password = '';
 $user_level = '';
 
@@ -40,19 +41,20 @@ if(is_post_request()) {
 <?php $page_title = 'Log in'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
 
-<div id="content">
-  <h1>Log in</h1>
+<div id="wrapper">
+  <div id="content">
+    <h2>Log in</h2>
 
-  <?= display_errors($errors); ?>
+    <?= display_errors($errors); ?>
 
-  <form action="login.php" method="post">
-    Username:<br>
-    <input type="text" name="username" value="<?= h($username); ?>" /><br />
-    Password:<br>
-    <input type="password" name="pass" value="" /><br>
-    <input type="submit" name="submit" value="Submit"  />
-  </form>
+    <form action="login.php" method="post">
+      Username:<br>
+      <input type="text" name="username" value="<?= h($username); ?>" /><br />
+      Password:<br>
+      <input type="password" name="pass" value="<?= h($pass); ?>" /><br>
+      <input type="submit" name="submit" value="Submit"  />
+    </form>
 
+  </div>
 </div>
-
 <?php include(SHARED_PATH . '/footer.php'); ?>

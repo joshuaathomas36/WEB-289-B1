@@ -1,9 +1,9 @@
 <?php 
-require_once('../private/initialize.php');
-$page_title = 'Homepage';
-include(SHARED_PATH . '/header.php'); 
+require_once('../../private/initialize.php');
+$page_title = 'Lunch';
+include(SHARED_PATH . '/member-header.php'); 
 
-$recipes = recipe::find_recipes(TRUE);
+$recipes = recipe::find_by_category(2);
 
 ?>
 
@@ -12,7 +12,7 @@ $recipes = recipe::find_recipes(TRUE);
 
   <div id="recipes">
     <?php foreach($recipes as $recipe) { ?>
-      <a class="action" href="<?= url_for('/show.php?id=' . h(u($recipe->recipe_id))); ?>">
+      <a class="action" href="<?= url_for('/members/show.php?id=' . h(u($recipe->recipe_id))); ?>">
         <div class="recipe">
           <!-- uploaded_image Start -->
           <?php $uploaded_image = uploadedimage::find_by_recipe_id($recipe->recipe_id); ?>
@@ -37,6 +37,5 @@ $recipes = recipe::find_recipes(TRUE);
     <?php } ?>
   </div>
 </div>
-
 
 <?php  include(SHARED_PATH . '/footer.php'); ?>

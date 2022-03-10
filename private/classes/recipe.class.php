@@ -18,7 +18,7 @@ class recipe extends databaseobject{
     $this->cook_time = $args['cook_time'] ?? '';
     $this->instructions = $args['instructions'] ?? '';
     $this->subcategory_id = $args['subcategory_id'] ?? '';
-    $this->approved = $args['approved'] ?? '';
+    $this->approved = $args['approved'] ?? FALSE;
   }
 
   /**
@@ -63,5 +63,15 @@ class recipe extends databaseobject{
     } else {
       return false;
     }
+  }
+
+  static public function find_by_recommended($id) {
+    $sql = "SELECT * FROM `recipe` AS r LEFT JOIN `recommended` AS re ON ( r.recipe_id = re.recommended_recipe_id ) WHERE re.user_id='" . $id . "'";
+    return static::find_by_sql($sql);
+  }
+
+  static public function find_by_meal_planner($id) {
+    $sql = "SELECT * FROM `recipe` AS r LEFT JOIN `meal_planner` AS mp ON ( r.recipe_id = mp.recipe_id ) WHERE mp.user_id='" . $id . "'";
+    return static::find_by_sql($sql);
   }
 }
