@@ -146,3 +146,31 @@ footer {
   color: #fff;
   padding: 10px;
 }
+
+/****** Form styles *****/
+input[type="text" i] {
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+input[type="password" i] {
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+input[type="submit" i] {
+  font-size: 20px;
+  padding: 5px 15px; 
+  background: #fff; 
+  border: 1px solid #000;
+  color: #000;
+  cursor: pointer;
+  margin: 8px 0;
+}
+
+input[type="submit" i]:hover {
+  background-color: #000;
+  color: #fff;
+}
