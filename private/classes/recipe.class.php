@@ -79,4 +79,15 @@ class recipe extends databaseobject{
     $sql = "SELECT * FROM `recipe` AS r LEFT JOIN `meal_planner` AS mp ON ( r.recipe_id = mp.recipe_id ) WHERE mp.user_id='" . $id . "'";
     return static::find_by_sql($sql);
   }
+
+  static public function find_by_name($name) {
+    $sql = "SELECT * FROM " . static::$table_name . " ";
+    $sql .= "WHERE name='" . self::$database->escape_string($name) . "'";
+    $obj_array = static::find_by_sql($sql);
+    if(!empty($obj_array)) {
+      return array_shift($obj_array);
+    } else {
+      return false;
+    }
+  }
 }

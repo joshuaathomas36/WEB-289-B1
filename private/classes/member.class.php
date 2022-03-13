@@ -39,11 +39,6 @@ class member extends databaseobject {
     return password_verify($pass, $this->password);
   }
 
-  // protected function create() {
-  //   $this->set_hashed_password();
-  //   return parent::create();
-  // }
-
   protected function update() {
     if($this->password != '') {
       $this->set_hashed_password();

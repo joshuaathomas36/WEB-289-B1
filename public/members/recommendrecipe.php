@@ -2,56 +2,72 @@
 require_once('../../private/initialize.php');
 
 $errors = [];
+$msg = '';
 $username = '';
-$pass = '';
-$password = '';
-$user_level = '';
+$recipe_name = '';
 
 if(is_post_request()) {
 
   $username = $_POST['username'] ?? '';
-  $pass = $_POST['pass'] ?? '';
+  $recipe_name = $_POST['recipe_name'] ?? '';
 
   // Validations
   if(is_blank($username)) {
     $errors[] = "Username cannot be blank.";
   }
-  if(is_blank($pass)) {
-    $errors[] = "Password cannot be blank.";
+  if(is_blank($recipe_name)) {
+    $errors[] = "You must chose a recipe.";
   }
 
   // if there were no errors, try to login
   if(empty($errors)) {
     $member = member::find_by_username($username);
-    // test if admin found and password is correct
-    if($member != false && $member->verify_password($pass)) {
-      // Mark admin as logged in
-      // Review this line
-      $session->login($member);
-      $user_level = $member->user_level;
-      $member->check_user_level($user_level);
+    $recipe = recipe::find_by_name($recipe_name);
+    if($member != false && $recipe != false) {
+      $recommended = new recommended;
+      $recommended->recommended_add($session->user_id, $member->user_id, $recipe->recipe_id);
+      $msg = "Recipe has been recommended";
     } else {
-      // username not found or password does not match
-      $errors[] = "Log in was unsuccessful.";
+      $errors[] = "Please make sure both are correct.";
     }
   }
 }
 ?>
 
-<?php $page_title = 'Log in'; ?>
-<?php include(SHARED_PATH . '/header.php'); ?>
+<?php $page_title = 'recommend recipe'; ?>
+<?php include(SHARED_PATH . '/member-header.php'); ?>
 
 <div id="wrapper">
   <div id="content">
-    <h2>Log in</h2>
+    <h2>Recommend Recipe</h2>
 
     <?= display_errors($errors); ?>
+    <?= $msg; ?>
 
-    <form action="login.php" method="post">
+    <?php
+      $members = member::find_all();
+      $recipes = recipe::find_all();
+    ?>
+
+    <form method="post">
       Username:<br>
-      <input class="form-field" type="text" name="username" value="<?= h($username); ?>" /><br />
-      Password:<br>
-      <input type="password" name="pass" value="<?= h($pass); ?>" /><br>
+      <input type="text" name="username" value="<?= h($username); ?>" list="username" />
+      <datalist id="username">
+        <option></option>
+        <?php foreach($members as $member) { ?>
+        <option><?= $member->username ?></option>
+        <?php } ?>
+      </datalist><br>
+
+      Recipe:<br>
+      <input type="text" name="recipe_name" value="<?= h($recipe_name); ?>" list="recipe_name" />
+      <datalist id="recipe_name">
+        <option></option>
+        <?php foreach($recipes as $recipe) { ?>
+        <option><?= $recipe->name ?></option>
+        <?php } ?>
+      </datalist><br>
+
       <input type="submit" name="submit" value="Submit"  />
     </form>
 

@@ -159,7 +159,7 @@ footer {
 /****** Form styles *****/
 input[type="text" i] {
   padding: 12px 20px;
-  margin: 8px 0;
+  margin: 8px 0 0 0;
   box-sizing: border-box;
 }
 
@@ -176,7 +176,7 @@ input[type="submit" i] {
   border: 1px solid #000;
   color: #000;
   cursor: pointer;
-  margin: 8px 0;
+  margin: 8px 0 0 0;
 }
 
 input[type="submit" i]:hover {
