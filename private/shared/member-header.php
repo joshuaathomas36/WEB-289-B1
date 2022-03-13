@@ -12,7 +12,7 @@
     <header>
       <?php
         if($session->is_logged_in()) { ?>
-          <p id="login">User: <?= $session->username; ?> <a class="button" href="<?= url_for('login/logout.php'); ?>">Logout</a> <a class="button" href="<?= url_for('members/account.php'); ?>">Account</a> <a class="button" href="<?= url_for('members/submitrecipe.php'); ?>">Submit Recipe</a></p>
+          <p id="login">User: <?= $session->username; ?> <a class="button" href="<?= url_for('login/logout.php'); ?>">Logout</a> <a class="button" href="<?= url_for('members/account.php'); ?>">Account</a> <a class="button" href="<?= url_for('members/submitrecipe.php'); ?>">Submit Recipe</a> <a class="button" href="<?= url_for('members/recommendrecipe.php'); ?>">Recommend Recipe</a></p>
       <?php } else { redirect_to(url_for('login/login.php')); } ?>
       <h1>
         <a href="<?= url_for('../public/members/index.php'); ?>">Foody's Delight</a>

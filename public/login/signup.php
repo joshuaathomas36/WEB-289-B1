@@ -10,7 +10,7 @@ if(is_post_request()) {
 
   if($result === true) {
     $new_id = $member->id;
-    $_SESSION['message'] = 'The member was created successfully.';
+    $_SESSION['message'] = 'The your account was successfully created.';
     redirect_to(url_for('members/index.php'));
   } else {
     // show errors

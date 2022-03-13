@@ -70,6 +70,11 @@ class recipe extends databaseobject{
     return static::find_by_sql($sql);
   }
 
+  static public function find_by_favorite($id) {
+    $sql = "SELECT * FROM `recipe` AS r LEFT JOIN `favorite` AS f ON ( r.recipe_id = f.recipe_id ) WHERE f.user_id='" . $id . "'";
+    return static::find_by_sql($sql);
+  }
+
   static public function find_by_meal_planner($id) {
     $sql = "SELECT * FROM `recipe` AS r LEFT JOIN `meal_planner` AS mp ON ( r.recipe_id = mp.recipe_id ) WHERE mp.user_id='" . $id . "'";
     return static::find_by_sql($sql);

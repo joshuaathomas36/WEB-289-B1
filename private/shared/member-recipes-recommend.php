@@ -49,6 +49,21 @@
             <?php } ?>
           </form>
           <!-- mp buttons End -->
+
+          <!-- remove recipe button Start -->
+          <?php 
+            $recommended = recommended::is_recommended($session->user_id, $id);
+            foreach($recommended as $recommend) {
+              $recommenders = $recommend->find_user($recommend->recommender_user_id);
+              foreach($recommenders as $recommender) {
+          ?>
+                <p class="recommender">Recommended By: <?= $recommender->username; ?></p>
+          <?php }} ?>
+          <form method="post">
+            <input type="hidden" name="id" value="<?= $id ?>"  />
+            <input type="submit" name="removeRCD" value="Remove recommended"  />
+          </form>
+          <!-- remove recipe buttons End -->
         </div>
       </a>
     <?php } ?>
