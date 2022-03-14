@@ -120,6 +120,17 @@ class member extends databaseobject {
     }
   }
 
+  static public function find_username_by_id($id) {
+    $sql = "SELECT username FROM " . static::$table_name . " ";
+    $sql .= "WHERE user_id='" . self::$database->escape_string($id) . "'";
+    $obj_array = static::find_by_sql($sql);
+    if(!empty($obj_array)) {
+      return array_shift($obj_array);
+    } else {
+      return false;
+    }
+  }
+
   /**
    * The check_user_level method checks the user level, then directs where the user goes based on that.
    *

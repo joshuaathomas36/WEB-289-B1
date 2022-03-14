@@ -28,9 +28,8 @@ if(is_post_request()) {
 ?>
 
 <div id="wrapper">
-  <a href="<?=url_for('index.php'); ?>">&laquo; Go Back</a>
-
-    <h1>Become a Member</h1>
+  <div id="form">
+    <h2>Become a Member</h2>
 
     <?=display_errors($member->errors); ?>
 
@@ -70,6 +69,7 @@ if(is_post_request()) {
         <input type="submit" value="Sign up!" />
       </div>
   </form>
+</div>
 </div>
 
 <?php include(SHARED_PATH . '/footer.php'); ?>

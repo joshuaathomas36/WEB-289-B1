@@ -8,7 +8,6 @@ class review extends databaseobject{
   public $review_id;
   public $user_id;
   public $recipe_id;
-  public $instructions;
   public $rating;
   public $review;
 
@@ -26,15 +25,10 @@ class review extends databaseobject{
    *
    * @return void
    */
-  static public function find_all() {
+  static public function find_all_reviews($id) {
     $sql = "SELECT * FROM " . static::$table_name . " ";
-    $sql .= "WHERE approved='" . self::$database->escape_string($name) . "'";
-    $obj_array = static::find_by_sql($sql);
-    if(!empty($obj_array)) {
-      return array_shift($obj_array);
-    } else {
-      return false;
-    }
+    $sql .= "WHERE recipe_id='" . self::$database->escape_string($id) . "'";
+    return static::find_by_sql($sql);
   }
 
   static public function find_sum_of_ratings_id($id) {
@@ -65,4 +59,8 @@ class review extends databaseobject{
 
   }
 
+  static public function review_add($user_id, $recipe_id, $rating, $review) {
+    $sql = "INSERT INTO " . static::$table_name . " (`user_id`, `recipe_id`, `rating`, `review`) VALUES (" . $user_id . ", " . $recipe_id . ", " . $rating . ", '" . $review . "')";
+    return self::$database->query($sql);
+  }
 }

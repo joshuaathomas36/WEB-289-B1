@@ -18,6 +18,10 @@ a {
   color: #000; 
 }
 
+.active {
+  color: #FFD977 !important;
+}
+
 /****** Nav and Header *****/
 header {
   background-color: #fff;
@@ -135,18 +139,40 @@ nav > a:hover {
 
 /****** Show Styles *****/
 .show {
-  text-align: center;
   align-self: center;
+  background-color: #fff;
+  text-align: left;
+  margin-left: 10%;
+  padding: 10px;
+  width: 80%;
 }
 
 .show-image {
-  width: 600px;
+  align-self: left;
   height: 360px;
+  margin-left: 10%;
+  width: 80%;
 }
 
-/* .show-rating {
-  
- } */
+.review {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 5px;
+}
+
+textarea {
+  width: 99%;
+  height: 150px;
+}
+
+/****** form *****/
+#form {
+  align-self: center;
+  background-color: #fff;
+  text-align: center;
+  margin-left: 10%;
+  width: 80%;
+}
 
 /****** Footer *****/
 
@@ -176,7 +202,7 @@ input[type="submit" i] {
   border: 1px solid #000;
   color: #000;
   cursor: pointer;
-  margin: 8px 0 0 0;
+  margin: 8px 0 8px 0;
 }
 
 input[type="submit" i]:hover {

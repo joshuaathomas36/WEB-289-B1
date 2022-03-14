@@ -1,5 +1,6 @@
 <?php 
 require_once('../private/initialize.php');
+$page = 'Desert';
 $page_title = 'Desert';
 include(SHARED_PATH . '/header.php'); 
 

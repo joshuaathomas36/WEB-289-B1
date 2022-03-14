@@ -2,7 +2,7 @@
 <html lang="en">
 
   <head>
-    <title>Foody's Delight <?php if(isset($page_title)) { echo '- ' . h($page_title); } ?></title>
+    <title>Foody's Delight Recipes <?php if(isset($page_title)) { echo '- ' . h($page_title); } ?></title>
     <meta charset="utf-8">
     <link rel="stylesheet" media="all" href="<?= url_for('/css/styles.css'); ?>" />
   </head>
@@ -11,7 +11,7 @@
 
     <header>
       <h1>
-        <a href="<?= url_for('../public/index.php'); ?>">Foody's Delight</a>
+        <a href="<?= url_for('../public/index.php'); ?>">Foody's Delight Recipes</a>
       </h1>
       <h2>Admin's Area</h2>
     </header>

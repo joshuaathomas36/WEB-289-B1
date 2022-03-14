@@ -38,8 +38,9 @@ if(is_post_request()) {
 <?php include(SHARED_PATH . '/member-header.php'); ?>
 
 <div id="wrapper">
-  <div id="content">
-    <h2>Recommend Recipe</h2>
+  <div id="form">
+    <h2>Recommend a Recipe to a Friend!</h2>
+    <p>Enter your friends username and the recipe you wish to recommend below.</p>
 
     <?= display_errors($errors); ?>
     <?= $msg; ?>
@@ -51,13 +52,7 @@ if(is_post_request()) {
 
     <form method="post">
       Username:<br>
-      <input type="text" name="username" value="<?= h($username); ?>" list="username" />
-      <datalist id="username">
-        <option></option>
-        <?php foreach($members as $member) { ?>
-        <option><?= $member->username ?></option>
-        <?php } ?>
-      </datalist><br>
+      <input type="text" name="username" value="<?= h($username); ?>" /><br>
 
       Recipe:<br>
       <input type="text" name="recipe_name" value="<?= h($recipe_name); ?>" list="recipe_name" />

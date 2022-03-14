@@ -42,7 +42,7 @@ if(is_post_request()) {
 <?php include(SHARED_PATH . '/header.php'); ?>
 
 <div id="wrapper">
-  <div id="content">
+  <div id="form">
     <h2>Log in</h2>
 
     <?= display_errors($errors); ?>

@@ -1,5 +1,6 @@
 <?php 
 require_once('../private/initialize.php');
+$page = 'Breakfast';
 $page_title = 'Breakfast';
 include(SHARED_PATH . '/header.php'); 
 

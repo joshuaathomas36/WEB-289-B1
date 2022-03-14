@@ -1,6 +1,6 @@
 <div id="recipes">
     <?php foreach($recipes as $recipe) { ?>
-      <a class="action" href="<?= url_for('/members/show.php?id=' . h(u($recipe->recipe_id))); ?>">
+      <a class="action" href="<?= url_for('/show.php?id=' . h(u($recipe->recipe_id))); ?>">
         <div class="recipe">
           <!-- uploaded_image Start -->
           <?php $uploaded_image = uploadedimage::find_by_recipe_id($recipe->recipe_id); ?>
