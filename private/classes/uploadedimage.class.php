@@ -35,4 +35,9 @@ class uploadedimage extends databaseobject{
       return false;
     }
   }
+
+  static public function upload_image($recipe_id, $new_image_name) {
+    $sql = "INSERT INTO " . static::$table_name . " (`recipe_id`, `uploaded_image`) VALUES (" . $recipe_id . ", " . $new_image_name . ")";
+    return self::$database->query($sql);
+  }
 }

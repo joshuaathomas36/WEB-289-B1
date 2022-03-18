@@ -15,8 +15,23 @@ class subcategory extends databaseobject{
     $this->category_id = $args['category_id'] ?? '';
   }
 
+  static public function find_all_subcategory_names() {
+    $sql = "SELECT * FROM `subcategory`";
+    return static::find_by_sql($sql);
+  }
+
   static public function find_subcategory_name($sub_id) {
     $sql = "SELECT * FROM `subcategory` AS s RIGHT JOIN `recipe` AS r ON ( s.subcategory_id = r.subcategory_id ) WHERE s.subcategory_id='" . $sub_id . "'";
     return static::find_by_sql($sql);
+  }
+
+  static public function find_by_subcategory_name($sub_name) {
+    $sql = "SELECT * FROM `subcategory` AS s RIGHT JOIN `recipe` AS r ON ( s.subcategory_id = r.subcategory_id ) WHERE s.subcategory_id='" . $sub_id . "'";
+    return static::find_by_sql($sql);
+  }
+
+  static public function subcategory_add($subcategory_name) {
+    $sql = "INSERT INTO " . static::$table_name . " (`subcategory_name`) VALUES (" . $subcategory_name . ")";
+    return self::$database->query($sql);
   }
 }

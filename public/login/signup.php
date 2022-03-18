@@ -35,10 +35,8 @@ if(is_post_request()) {
 
     <form action="<?=url_for('login/signup.php'); ?>" method="post">
 
-    <dl>
-      <dt>First name</dt>
-      <dd><input type="text" name="member[first_name]" value="<?= h($member->first_name); ?>" /></dd>
-    </dl>
+      <label for="email">First name</label>
+      <input type="text" name="member[first_name]" value="<?= h($member->first_name); ?>" />
 
     <dl>
       <dt>Last name</dt>

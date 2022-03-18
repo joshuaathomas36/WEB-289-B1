@@ -32,7 +32,7 @@ if(is_post_request()) {
       $member->check_user_level($user_level);
     } else {
       // username not found or password does not match
-      $errors[] = "Log in was unsuccessful.";
+      $errors[] = "No account found matching that exact username and password, please make sure both are correct.";
     }
   }
 }
@@ -47,7 +47,7 @@ if(is_post_request()) {
 
     <?= display_errors($errors); ?>
 
-    <form action="login.php" method="post">
+    <form action="" method="post">
       Username:<br>
       <input class="form-field" type="text" name="username" value="<?= h($username); ?>" /><br />
       Password:<br>

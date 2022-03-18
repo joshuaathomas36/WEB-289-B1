@@ -18,7 +18,7 @@ class ingredient extends databaseobject{
    *
    * @return void
    */
-  static public function find_all() {
+  static public function find_all_ingredient() {
     $sql = "SELECT * FROM " . static::$table_name . "";
     return static::find_by_sql($sql);
   }
