@@ -1,6 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300&display=swap');
 /****** Page defaults *****/
 html {
-  font-family: "Frank Ruhl Libre", Georgia, serif;
+  font-family: 'Frank Ruhl Libre', Georgia, serif;
 }
 
 body {
@@ -10,7 +11,8 @@ body {
 
 #wrapper {
   background-color: #F0F9F9;
-  padding-left: 10px;
+  position: relative;
+  min-height: 100vh;
 }
 
 a {
@@ -19,7 +21,7 @@ a {
 }
 
 .active {
-  color: #FFD977 !important;
+  color: #0076D1 !important;
 }
 
 /****** Nav and Header *****/
@@ -43,7 +45,7 @@ header {
 }
 
 h1 > a {
-  color: #ec1c2e;
+  color: #e71324;
   margin: 0;
   padding: 20px;
 }
@@ -57,10 +59,7 @@ nav {
   list-style: none;
   background-color: #fff;
   border-bottom: 1px solid #FFD977;
-  padding-bottom: 15px;
-  padding-left: 0px;
-  padding-right: 0px;
-  padding-top: 16px;
+  padding: 16px 0 15px 0;
   margin: 0;
   font-family: Arial, serif;
   font-size: 28px;
@@ -71,7 +70,7 @@ nav > a {
 }
 
 nav > a:hover {
-  text-decoration: underline #68beff;
+  text-decoration: underline #0076D1;
 }
 
 /****** Recipe display styles *****/
@@ -79,6 +78,7 @@ nav > a:hover {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  padding-bottom: 2.5rem;
 }
 
 .recipe {
@@ -110,7 +110,7 @@ nav > a:hover {
 }
 
 .sub {
-  color: #aaa;
+  color: #767676;
   text-align: center;
 }
 
@@ -142,7 +142,7 @@ nav > a:hover {
   align-self: center;
   background-color: #fff;
   text-align: left;
-  margin-left: 10%;
+  margin: 0 auto;
   padding: 10px;
   width: 80%;
 }
@@ -150,8 +150,8 @@ nav > a:hover {
 .show-image {
   align-self: left;
   height: 360px;
-  margin-left: 10%;
-  width: 80%;
+  margin: 0 auto;
+  max-width: 600px;
 }
 
 .review {
@@ -170,8 +170,9 @@ textarea {
   align-self: center;
   background-color: #fff;
   text-align: center;
-  margin-left: 10%;
+  margin: 0 auto;
   width: 80%;
+  padding-bottom: 2.5rem;
 }
 
 /****** Footer *****/
@@ -180,6 +181,9 @@ footer {
   background-color: #343A40;
   color: #fff;
   padding: 10px;
+  position: absolute;
+  bottom: 0;
+  height: 2.5rem;
 }
 
 /****** Form styles *****/

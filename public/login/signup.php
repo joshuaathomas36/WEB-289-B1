@@ -33,41 +33,39 @@ if(is_post_request()) {
 
     <?=display_errors($member->errors); ?>
 
-    <form action="<?=url_for('login/signup.php'); ?>" method="post">
+    <form action="" method="post">
 
-      <label for="email">First name</label>
-      <input type="text" name="member[first_name]" value="<?= h($member->first_name); ?>" />
+      <label for="first_name">First name</label><br>
+      <input id="first_name" type="text" name="member[first_name]" value="<?= h($member->first_name); ?>" /><br>
 
-    <dl>
-      <dt>Last name</dt>
-      <dd><input type="text" name="member[last_name]" value="<?= h($member->last_name); ?>" /></dd>
-    </dl>
+    
+      <label for="last_name">Last name</label><br>
+      <input id="last_name" type="text" name="member[last_name]" value="<?= h($member->last_name); ?>" /><br>
 
-    <dl>
-      <dt>Email</dt>
-      <dd><input type="text" name="member[email]" value="<?= h($member->email); ?>" /></dd>
-    </dl>
+  
+      <label for="email">Email</label><br>
+      <input id="email" type="text" name="member[email]" value="<?= h($member->email); ?>" /><br>
+    
 
-    <dl>
-      <dt>Username</dt>
-      <dd><input type="text" name="member[username]" value="<?= h($member->username); ?>" /></dd>
-    </dl>
+ 
+      <label for="username">Username</label><br>
+      <input id="username" type="text" name="member[username]" value="<?= h($member->username); ?>" /><br>
+   
 
-    <dl>
-      <dt>Password</dt>
-      <dd><input type="password" name="member[password]" value="" /></dd>
-    </dl>
+   
+      <label for="password">Password</label><br>
+      <input id="password" type="password" name="member[password]" value="" /><br>
 
-    <dl>
-      <dt>Confirm Password</dt>
-      <dd><input type="password" name="member[confirm_password]" value="" /></dd>
-    </dl>
+    
+      <label for="confirm_password">Confirm Password</label><br>
+      <input id="confirm_password" type="password" name="member[confirm_password]" value="" /><br>
+    
 
       <div id="operations">
         <input type="submit" value="Sign up!" />
       </div>
-  </form>
-</div>
-</div>
+    </form>
+  </div>
 
-<?php include(SHARED_PATH . '/footer.php'); ?>
+  <?php include(SHARED_PATH . '/footer.php'); ?>
+</div>

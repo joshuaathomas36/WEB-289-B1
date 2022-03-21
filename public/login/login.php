@@ -48,13 +48,16 @@ if(is_post_request()) {
     <?= display_errors($errors); ?>
 
     <form action="" method="post">
-      Username:<br>
-      <input class="form-field" type="text" name="username" value="<?= h($username); ?>" /><br />
-      Password:<br>
-      <input type="password" name="pass" value="<?= h($pass); ?>" /><br>
-      <input type="submit" name="submit" value="Submit"  />
+      <label for="username">Username:</label><br>
+      <input id="username" class="form-field" type="text" name="username" value="<?= h($username); ?>" /><br />
+
+      <label for="password">Password:</label><br>
+      <input id="password" type="password" name="pass" value="<?= h($pass); ?>" /><br>
+
+      <input type="submit" name="submit" value="Submit" />
     </form>
 
   </div>
+
+  <?php include(SHARED_PATH . '/footer.php'); ?>
 </div>
-<?php include(SHARED_PATH . '/footer.php'); ?>

@@ -10,6 +10,6 @@
   <h2>Welcome to Foody's Delight Recipes</h2>
 
   <?php include(SHARED_PATH . '/recipes.php'); ?>
-</div>
 
-<?php  include(SHARED_PATH . '/footer.php'); ?>
+  <?php  include(SHARED_PATH . '/footer.php'); ?>
+</div>

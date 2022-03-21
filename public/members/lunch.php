@@ -13,6 +13,5 @@ $recipes = recipe::find_by_category(2);
 
   <?php include(SHARED_PATH . '/member-recipes.php'); ?>
   
+  <?php  include(SHARED_PATH . '/footer.php'); ?>
 </div>
-
-<?php  include(SHARED_PATH . '/footer.php'); ?>

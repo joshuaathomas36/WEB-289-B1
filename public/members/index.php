@@ -12,7 +12,5 @@ $recipes = recipe::find_recipes(TRUE);
   <?php include(SHARED_PATH . '/member-post.php'); ?>
   <?php include(SHARED_PATH . '/member-recipes.php'); ?>
 
+  <?php  include(SHARED_PATH . '/footer.php'); ?>
 </div>
-
-
-<?php  include(SHARED_PATH . '/footer.php'); ?>

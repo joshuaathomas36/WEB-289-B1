@@ -69,7 +69,5 @@
         <input type="submit" value="Submit Recipe" />
     </form>
   </div>
+  <?php  include(SHARED_PATH . '/footer.php'); ?>
 </div>
-
-
-<?php include(SHARED_PATH . '/footer.php'); ?>

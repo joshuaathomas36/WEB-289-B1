@@ -12,7 +12,6 @@ $recipes = recipe::find_by_category(2);
   <h2>Welcome to the Lunch Page</h2>
 
   <?php include(SHARED_PATH . '/recipes.php'); ?>
-  
-</div>
 
-<?php  include(SHARED_PATH . '/footer.php'); ?>
+  <?php  include(SHARED_PATH . '/footer.php'); ?>
+</div>

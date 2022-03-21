@@ -9,10 +9,9 @@ $recipes = recipe::find_by_category(1);
 ?>
 
 <div id="wrapper">
-  <h2>Welcome to Foody's Delight</h2>
+  <h2>Welcome to Breakfast Page</h2>
 
   <?php include(SHARED_PATH . '/recipes.php'); ?>
   
+  <?php  include(SHARED_PATH . '/footer.php'); ?>
 </div>
-
-<?php  include(SHARED_PATH . '/footer.php'); ?>

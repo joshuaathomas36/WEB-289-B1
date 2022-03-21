@@ -53,6 +53,6 @@
       </div>
     <?php } ?>
   </div>
-</div>
 
-<?php  include(SHARED_PATH . '/footer.php'); ?>
+  <?php  include(SHARED_PATH . '/footer.php'); ?>
+</div>
