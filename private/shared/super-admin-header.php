@@ -11,7 +11,7 @@
 
     <header>
       <h1>
-        <a href="<?= url_for('../public/index.php'); ?>">Foody's Delight Recipes</a>
+        <a href="<?= url_for('super-admins/index.php'); ?>">Foody's Delight <img class="logo" src="<?= url_for('uploaded-images/fdr-logo.JPG') ?>" alt=""> Recipes</a>
       </h1>
       <h2>Super Admin's Area</h2>
     </header>

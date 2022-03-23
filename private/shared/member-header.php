@@ -5,6 +5,7 @@
     <title>Foody's Delight Recipes <?php if(isset($page_title)) { echo '- ' . h($page_title); } ?></title>
     <meta charset="utf-8">
     <link rel="stylesheet" media="all" href="<?= url_for('/css/styles.css'); ?>" />
+    <link rel="icon" type="image/x-icon" href="<?= url_for('uploaded-images/favicon.png') ?>">
   </head>
 
   <body>
@@ -15,7 +16,7 @@
           <p id="login"><a class="button" href="<?= url_for('login/logout.php'); ?>">Logout of <?= $session->username; ?></a> <a class="button" href="<?= url_for('members/account.php'); ?>">Account</a> <a class="button" href="<?= url_for('members/submitrecipe.php'); ?>">Submit Recipe</a> <a class="button" href="<?= url_for('members/recommendrecipe.php'); ?>">Recommend Recipe</a></p>
       <?php } else { redirect_to(url_for('login/login.php')); } ?>
       <h1>
-        <a href="<?= url_for('../public/members/index.php'); ?>">Foody's Delight Recipes</a>
+        <a href="<?= url_for('members/index.php'); ?>">Foody's Delight <img class="logo" src="<?= url_for('uploaded-images/fdr-logo.JPG') ?>" alt=""> Recipes</a>
       </h1>
     </header>
 

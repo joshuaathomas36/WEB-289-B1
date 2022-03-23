@@ -1,5 +1,5 @@
 <footer>
-<p>Foody's Delight &copy; <?= date('Y'); ?></p>
+<p>&nbsp; Foody's Delight &copy; <?= date('Y'); ?></p>
 
 </footer>
 

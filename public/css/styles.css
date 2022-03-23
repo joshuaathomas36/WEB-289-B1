@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
 /****** Page defaults ******/
 html {
-  font-family: 'Frank Ruhl Libre', Georgia, serif;
+  font-family: Georgia, serif;
 }
 
 body {
@@ -46,9 +46,16 @@ header {
 
 h1 > a {
   color: #e71324;
+  font-family: 'Dancing Script', Georgia, serif;
   font-size: 40px;
   margin: 0;
   padding: 20px;
+}
+
+.logo {
+  height: 44px;
+  vertical-align: bottom;
+  width: 48px;
 }
 
 h2 {
@@ -181,8 +188,9 @@ footer {
   bottom: 0;
   color: #fff;
   height: 2.5rem;
-  padding: 10px;
+  padding: 10px 0;
   position: absolute;
+  width: 100%;
 }
 
 /****** Form styles *****/
