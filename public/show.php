@@ -24,8 +24,12 @@
     <?php 
       $ingredients = ingredient::find_by_recipe_id($id);
       foreach($ingredients as $ingredient) { 
+        $amounts = $measurements = measurement::find_by_recipe_id($id, $ingredient->ingredient_id);
+        $measurements = measurement::find_by_recipe_id($id, $ingredient->ingredient_id);
+        foreach($measurements as $measurement) {
+          foreach($amounts as $amount) {
     ?>
-      <p><?= h($ingredient->ingredient_name); ?></p>
+            <p><?= h($amount->amount); } ?> <?= h($measurement->measurement); }?> <?= h($ingredient->ingredient_name); ?></p>
     <?php } ?>
 
     <h3>Instructions</h3>

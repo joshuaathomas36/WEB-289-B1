@@ -1,25 +1,28 @@
 <?php
-require_once('../../private/initialize.php');
+  require_once('../../private/initialize.php');
 
-if(is_post_request()) {
+  if(is_post_request()) {
 
-  // Create record using post parameters
-  $args = $_POST['member'];
-  $member = new member($args);
-  $result = $member->save();
+    // Create record using post parameters
+    $args = $_POST['member'];
+    $member = new member($args);
+    $result = $member->save();
 
-  if($result === true) {
-    $new_id = $member->id;
-    $_SESSION['message'] = 'The your account was successfully created.';
-    redirect_to(url_for('members/index.php'));
+    if($result === true) {
+      $new_id = $member->id;
+      $_SESSION['message'] = 'The your account was successfully created.';
+
+      $login = member::find_by_username($member->username);
+      $session->login($login);
+      redirect_to(url_for('members/index.php'));
+    } else {
+      // show errors
+    }
+
   } else {
-    // show errors
+    // display the form
+    $member = new member;
   }
-
-} else {
-  // display the form
-  $member = new member;
-}
 ?>
 
 <?php 

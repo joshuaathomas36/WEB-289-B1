@@ -111,7 +111,7 @@ INSERT INTO `site_user` (`user_id`, `username`, `password`, `user_level`, `first
 (4, 'johndoe', '$2y$10$vRQdyAg4qohElFESR/4Ji.ps4cp7dEQdkGg77yCE5Dgqevqhz4PDG', 'M', 'John', 'Doe', 'johndoe@email.com');
 
 INSERT INTO `category` (`category_id`, `category_name`) VALUES
-(1, 'Breakfast'), (2, 'Lunch'), (3, 'Dinner'), (4, 'Desert');
+(1, 'Breakfast'), (2, 'Lunch'), (3, 'Dinner'), (4, 'Dessert');
 
 INSERT INTO `subcategory` (`subcategory_id`, `subcategory_name`, `category_id`) VALUES
 (1, 'Pancakes', 1), (2, 'Sandwich', 2), (3, 'Pasta', 3),
@@ -147,7 +147,7 @@ INSERT INTO `ingredient` (`ingredient_id`, `ingredient_name`) VALUES
 (17, 'Chicken'), (18, 'Breaded Chicken'), (19, 'butter'), (20, 'Bread'),
 (21, 'margarine'), (22, 'American Cheese'), (23, 'Tomato'), (24, 'jalapeno pepper');
 
-INSERT INTO INSERT INTO `measurement` (`measurement_id`, `measurement`) VALUES
+INSERT INTO `measurement` (`measurement_id`, `measurement`) VALUES
 (1, 'tsp'), (2, 'Tbsp'), (3, 'Oz'), (4, 'fl. Oz'), (5, 'Cup'), (6, 'Cups'), (7, 'qt'), (8, 'pt'),
 (9, 'gal'), (10, 'lb'), (11, 'mL'), (12, 'g'), (13, 'kg'), (14, 'l');
 
@@ -160,4 +160,3 @@ INSERT INTO `recipe_ingredient` (`recipe_ingredient_id`, `recipe_id`, `amount`, 
 INSERT INTO `uploaded_image` (`uploaded_image_id`, `recipe_id`, `uploaded_image`) VALUES
 (1, 1, 'IMG-1.jpg'), (2, 2, 'IMG-2.jpg'),
 (3, 3, 'IMG-3.jpg'), (4, 4, 'IMG-4.jpg'), (5, 5, 'IMG-5.jpg');
-

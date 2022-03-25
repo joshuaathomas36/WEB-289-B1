@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
 /****** Page defaults ******/
 html {
-  font-family: Georgia, serif;
+  font-family: 'Roboto', Georgia, serif;
 }
 
 body {
@@ -22,6 +24,7 @@ a {
 
 .active {
   color: #0076D1 !important;
+  text-decoration: underline #0076D1 !important;
 }
 
 /****** Nav and Header *****/
@@ -172,28 +175,37 @@ textarea {
   width: 99%;
 }
 
-/****** form *****/
-#form {
-  align-self: center;
-  background-color: #fff;
-  margin: 0 auto;
-  padding-bottom: 2.5rem;
-  text-align: center;
-  width: 80%;
-}
-
 /****** Footer *****/
 footer {
   background-color: #343A40;
   bottom: 0;
   color: #fff;
-  height: 2.5rem;
+  height: 40px;
+  margin-top: 20px;
   padding: 10px 0;
   position: absolute;
   width: 100%;
 }
 
-/****** Form styles *****/
+/****** Forms *****/
+.errors {
+  color: #e71324;
+}
+
+.errors ul {
+  text-decoration: none;
+  list-style: none;
+}
+
+#form {
+  align-self: center;
+  background-color: #fff;
+  margin: 0 auto;
+  padding-bottom: 4rem;
+  text-align: center;
+  width: 80%;
+}
+
 input[type="text" i] {
   box-sizing: border-box;
   margin: 8px 0 0 0;
@@ -212,7 +224,7 @@ input[type="submit" i] {
   color: #000;
   cursor: pointer;
   font-size: 20px;
-  margin: 8px 0 8px 0;
+  margin: 8px;
   padding: 5px 15px;
 }
 

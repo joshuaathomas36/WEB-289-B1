@@ -1,11 +1,9 @@
 <?php 
-require_once('../private/initialize.php');
-$page = 'Dessert';
-$page_title = 'Dessert';
-include(SHARED_PATH . '/header.php'); 
-
-$recipes = recipe::find_by_category(4);
-
+  require_once('../private/initialize.php');
+  $page = 'Dessert';
+  $page_title = 'Dessert';
+  include(SHARED_PATH . '/header.php');
+  $recipes = recipe::find_by_category(4);
 ?>
 
 <div id="wrapper">

@@ -74,6 +74,8 @@ class member extends databaseobject {
       $this->errors[] = "Email must be less than 100 characters.";
     } elseif (!has_valid_email_format($this->email)) {
       $this->errors[] = "Email must be a valid format.";
+    } elseif (!has_unique_email($this->email, $this->id ?? 0)) {
+      $this->errors[] = "Email is already in use, If you already have an account please use that one. If this is your email but you don't have an account please email us about the issue.";
     }
 
     if(is_blank($this->username)) {
@@ -112,6 +114,17 @@ class member extends databaseobject {
   static public function find_by_username($username) {
     $sql = "SELECT * FROM " . static::$table_name . " ";
     $sql .= "WHERE username='" . self::$database->escape_string($username) . "'";
+    $obj_array = static::find_by_sql($sql);
+    if(!empty($obj_array)) {
+      return array_shift($obj_array);
+    } else {
+      return false;
+    }
+  }
+
+  static public function find_by_email($email) {
+    $sql = "SELECT * FROM " . static::$table_name . " ";
+    $sql .= "WHERE email='" . self::$database->escape_string($email) . "'";
     $obj_array = static::find_by_sql($sql);
     if(!empty($obj_array)) {
       return array_shift($obj_array);

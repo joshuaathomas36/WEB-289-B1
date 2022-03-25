@@ -108,3 +108,13 @@
     }
   }
 
+  function has_unique_email($username, $current_id="0") {
+    $member = member::find_by_email($username);
+    if($member === false || $member->user_id == $current_id) {
+      // is unique
+      return true;
+    } else {
+      return false;
+    }
+  }
+

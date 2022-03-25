@@ -1,41 +1,41 @@
 <?php
-require_once('../../private/initialize.php');
+  require_once('../../private/initialize.php');
 
-$errors = [];
-$username = '';
-$pass = '';
-$password = '';
-$user_level = '';
+  $errors = [];
+  $username = '';
+  $pass = '';
+  $password = '';
+  $user_level = '';
 
-if(is_post_request()) {
+  if(is_post_request()) {
 
-  $username = $_POST['username'] ?? '';
-  $pass = $_POST['pass'] ?? '';
+    $username = $_POST['username'] ?? '';
+    $pass = $_POST['pass'] ?? '';
 
-  // Validations
-  if(is_blank($username)) {
-    $errors[] = "Username cannot be blank.";
-  }
-  if(is_blank($pass)) {
-    $errors[] = "Password cannot be blank.";
-  }
+    // Validations
+    if(is_blank($username)) {
+      $errors[] = "Username cannot be blank.";
+    }
+    if(is_blank($pass)) {
+      $errors[] = "Password cannot be blank.";
+    }
 
-  // if there were no errors, try to login
-  if(empty($errors)) {
-    $member = member::find_by_username($username);
-    // test if admin found and password is correct
-    if($member != false && $member->verify_password($pass)) {
-      // Mark admin as logged in
-      // Review this line
-      $session->login($member);
-      $user_level = $member->user_level;
-      $member->check_user_level($user_level);
-    } else {
-      // username not found or password does not match
-      $errors[] = "No account found matching that exact username and password, please make sure both are correct.";
+    // if there were no errors, try to login
+    if(empty($errors)) {
+      $member = member::find_by_username($username);
+      // test if admin found and password is correct
+      if($member != false && $member->verify_password($pass)) {
+        // Mark admin as logged in
+        // Review this line
+        $session->login($member);
+        $user_level = $member->user_level;
+        $member->check_user_level($user_level);
+      } else {
+        // username not found or password does not match
+        $errors[] = "No account found matching that exact username and password.";
+      }
     }
   }
-}
 ?>
 
 <?php $page_title = 'Log in'; ?>

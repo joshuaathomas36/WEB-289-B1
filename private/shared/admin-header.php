@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" media="all" href="<?= url_for('/css/styles.css'); ?>" />
     <link rel="icon" type="image/x-icon" href="<?= url_for('uploaded-images/favicon.png') ?>">
+    <script src="<?= url_for('js/submit.js') ?>"></script>
   </head>
 
   <body>
