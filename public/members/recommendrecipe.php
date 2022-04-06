@@ -1,10 +1,17 @@
 <?php
   require_once('../../private/initialize.php');
 
+  $id = $_GET['id'] ?? '';
+  if(!is_blank($id)) {
+    $recipe = recipe::find_by_recipe_id($id);
+  }
+ 
+
   $errors = [];
   $msg = '';
-  $username = '';
+  $email = '';
   $recipe_name = '';
+  $recipe_name = $recipe->name ?? '';
 
   if(is_post_request()) {
 
@@ -46,10 +53,7 @@
     <?= display_errors($errors); ?>
     <?= $msg; ?>
 
-    <?php
-      $members = member::find_all();
-      $recipes = recipe::find_all();
-    ?>
+    
 
     <form method="post">
       <label for="email">Email:</label><br>
@@ -59,7 +63,10 @@
       <input id="recipe" type="text" name="recipe_name" value="<?= h($recipe_name); ?>" list="recipe_name" />
       <datalist id="recipe_name">
         <option></option>
-        <?php foreach($recipes as $recipe) { ?>
+        <?php 
+          $recipes = recipe::find_all();
+          foreach($recipes as $recipe) { 
+        ?>
         <option><?= $recipe->name ?></option>
         <?php } ?>
       </datalist><br>
@@ -68,5 +75,5 @@
     </form>
 
   </div>
-  <?php  include(SHARED_PATH . '/footer.php'); ?>
 </div>
+<?php  include(SHARED_PATH . '/footer.php'); ?>

@@ -11,5 +11,5 @@
 
   <?php include(SHARED_PATH . '/recipes.php'); ?>
 
-  <?php  include(SHARED_PATH . '/footer.php'); ?>
 </div>
+<?php  include(SHARED_PATH . '/footer.php'); ?>

@@ -22,6 +22,7 @@
     </header>
 
     <nav>
+      <?php $page = $page ?? ''; ?>
       <a class="<?php if($page == 'Home') {echo 'active';} ?>" href="<?= url_for('/members/index.php'); ?>">Home</a>
       <?php 
         $categorys = category::find_all(); 

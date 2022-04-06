@@ -7,10 +7,10 @@
 ?>
 
 <div id="wrapper">
-  <h2>Here is Some Dessert Recipes</h2>
+  <h2>Here are Some Dessert Recipes</h2>
 
   <?php include(SHARED_PATH . '/member-post.php'); ?>
   <?php include(SHARED_PATH . '/member-recipes.php'); ?>
   
-  <?php  include(SHARED_PATH . '/footer.php'); ?>
 </div>
+<?php  include(SHARED_PATH . '/footer.php'); ?>

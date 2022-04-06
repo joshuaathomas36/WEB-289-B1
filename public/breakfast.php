@@ -3,9 +3,7 @@ require_once('../private/initialize.php');
 $page = 'Breakfast';
 $page_title = 'Breakfast';
 include(SHARED_PATH . '/header.php'); 
-
 $recipes = recipe::find_by_category(1);
-
 ?>
 
 <div id="wrapper">
@@ -13,5 +11,5 @@ $recipes = recipe::find_by_category(1);
 
   <?php include(SHARED_PATH . '/recipes.php'); ?>
   
-  <?php  include(SHARED_PATH . '/footer.php'); ?>
 </div>
+<?php  include(SHARED_PATH . '/footer.php'); ?>

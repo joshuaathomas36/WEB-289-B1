@@ -13,8 +13,7 @@ body {
 
 #wrapper {
   background-color: #F0F9F9;
-  min-height: 100vh;
-  position: relative;
+  min-height: 75vh;
 }
 
 a {
@@ -89,7 +88,6 @@ nav > a:hover {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding-bottom: 2.5rem;
 }
 
 .recipe {
@@ -173,6 +171,7 @@ nav > a:hover {
 textarea {
   height: 150px;
   width: 99%;
+  max-width: 99%;
 }
 
 /****** Footer *****/
@@ -183,7 +182,6 @@ footer {
   height: 40px;
   margin-top: 20px;
   padding: 10px 0;
-  position: absolute;
   width: 100%;
 }
 
@@ -208,13 +206,11 @@ footer {
 
 input[type="text" i] {
   box-sizing: border-box;
-  margin: 8px 0 0 0;
   padding: 12px 20px;
 }
 
 input[type="password" i] {
   box-sizing: border-box;
-  margin: 8px 0 0 0;
   padding: 12px 20px;
 }
 
@@ -231,4 +227,26 @@ input[type="submit" i] {
 input[type="submit" i]:hover {
   background-color: #000;
   color: #fff;
+}
+
+input[type="number" i] {
+  width: 80px;
+}
+
+input {
+  box-sizing: border-box;
+  margin: 0 0 20px 0;
+  padding: 12px 20px;
+}
+
+label {
+  font-weight: bold;
+}
+
+textarea {
+  margin: 0 0 8px 0;
+}
+
+.clarifying {
+  margin: 0;
 }

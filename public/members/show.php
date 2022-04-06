@@ -23,7 +23,9 @@
 
 <div id="wrapper">
   <div class="show">
+    <a class="button float" href="<?= url_for('members/recommendrecipe.php?id=' . h(u($id)));?>">Recommend This Recipe</a>
     <h2><?= h($recipe->name); ?></h2>
+    
 
     <?php $uploaded_image = uploadedimage::find_by_recipe_id($id); ?>
     <img class="show-image" src="<?= url_for('uploaded-images/' . h($uploaded_image->uploaded_image)); ?>" alt="">
@@ -89,5 +91,5 @@
       </div>
     <?php } ?>
   </div>
-  <?php  include(SHARED_PATH . '/footer.php'); ?>
 </div>
+<?php  include(SHARED_PATH . '/footer.php'); ?>

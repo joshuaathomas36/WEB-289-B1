@@ -25,5 +25,5 @@
     include(SHARED_PATH . '/member-recipes-recommend.php');
   ?>
 
-  <?php  include(SHARED_PATH . '/footer.php'); ?>
 </div>
+<?php  include(SHARED_PATH . '/footer.php'); ?>
