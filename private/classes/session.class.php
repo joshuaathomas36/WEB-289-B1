@@ -75,7 +75,9 @@ class session {
       return true;
     } else {
       // this is a "get" message
-      return $_SESSION['message'];
+      $string = $_SESSION['message'] ?? '';
+      unset($_SESSION['message']);
+      return $string;
     }
   }
 

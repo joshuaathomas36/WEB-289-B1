@@ -3,10 +3,22 @@
   $page_title = 'Account';
   include(SHARED_PATH . '/member-header.php');
   include(SHARED_PATH . '/member-post.php');
+
+  $msg = "";
+  $string = "";
+  $msg = $session->message($string);
 ?>
 
 <div id="wrapper">
   <h2>Welcome To Your Account</h2>
+
+  <?php if(!is_blank($msg)) { ?>
+    <p id="msg"><?= $msg; ?></p>
+  <?php } else {} ?>
+
+  <h3>Account Info.</h3>
+
+
   <h3>Your Meal Planner.</h3>
   <?php
     $recipes = recipe::find_by_meal_planner($session->user_id);

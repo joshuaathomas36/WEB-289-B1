@@ -51,7 +51,9 @@
     <p>Attention: the email you enter must be the email of a current member.</p>
 
     <?= display_errors($errors); ?>
-    <?= $msg; ?>
+    <?php if(!is_blank($msg)) { ?>
+      <p id="msg"><?= $msg; ?></p>
+    <?php } else {} ?>
 
     
 

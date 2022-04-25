@@ -155,7 +155,7 @@ class member extends databaseobject {
     } elseif($user_level == 'A') {
       redirect_to(url_for('/admins/index.php'));
     } elseif($user_level == 'M') {
-      redirect_to(url_for('/members/index.php'));
+      redirect_to(url_for('/members/account.php'));
     } else {
       $errors[] = "Login was unsuccessful, please try again.";
     }
