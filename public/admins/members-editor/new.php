@@ -9,7 +9,7 @@
     $result = $member->save();
 
     if($result === true) {
-      $new_id = $member->id;
+      $new_id = $member->user_id;
       $_SESSION['message'] = 'The member was created successfully.';
       redirect_to(url_for('admins/members-editor/show.php?id=' . $new_id));
     } else {

@@ -159,4 +159,26 @@ class member extends databaseobject {
     }
   }
 
+  static public function delete_user($id) {
+    $sql = "DELETE FROM meal_planner WHERE user_id='" . $id . "'";
+    self::$database->query($sql);
+
+    $sql = "DELETE FROM favorite WHERE user_id='" . $id . "'";
+    self::$database->query($sql);
+
+    $sql = "DELETE FROM review WHERE user_id='" . $id . "'";
+    self::$database->query($sql);
+
+    $sql = "DELETE FROM recommended WHERE recommender_user_id='" . $id . "'";
+    self::$database->query($sql);
+
+    $sql = "DELETE FROM recommended WHERE user_id='" . $id . "'";
+    self::$database->query($sql);
+
+    $sql = "DELETE FROM " . static::$table_name . " WHERE user_id='" . $id . "'";
+    self::$database->query($sql);
+
+    return true;
+  }
+
 }

@@ -29,7 +29,7 @@
       if(is_post_request()) {
 
         // Delete admin
-        $member->delete();
+        $member->delete_user($id);
         $_SESSION['message'] = 'The user was deleted successfully.';
         redirect_to(url_for('/admins/members-editor/index.php'));
 
@@ -40,7 +40,7 @@
         <p><?= h($member->full_name()); ?></p>
         
         <form action="<?= url_for('/admins/members-editor/delete.php?id=' . h(u($id))); ?>" method="post">
-            <input type="submit" name="commit" value="Delete Member" />
+            <input type="submit" name="submit" value="Delete Member" />
         </form>
       
     <?php } ?>

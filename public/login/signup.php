@@ -9,9 +9,7 @@
     $result = $member->save();
 
     if($result === true) {
-      $new_id = $member->id;
       $_SESSION['message'] = 'The your account was successfully created.';
-
       $login = member::find_by_username($member->username);
       $session->login($login);
       unset($_SESSION['attempts']);
