@@ -11,6 +11,13 @@
 
 <div id="wrapper">
   <h2>Welcome To Your Account</h2>
+  <?php if($_SESSION['user_level'] != 'M') { ?>
+    <p><a class="button" href="<?= url_for('/admins/index.php'); ?>">Admin's Area</a></p>
+  <?php } ?>
+
+  <?php if($_SESSION['user_level'] == 'S') { ?>
+    <p><a class="button" href="<?= url_for('/super-admins/index.php'); ?>">Super Admin's Area</a></p>
+  <?php } ?>
 
   <?php if(!is_blank($msg)) { ?>
     <p id="msg"><?= $msg; ?></p>

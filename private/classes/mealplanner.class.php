@@ -15,11 +15,6 @@ class mealplanner extends databaseobject{
     $this->recipe_id = $args['recipe_id'] ?? '';
   }
 
-  /**
-   * find all approve recipes
-   *
-   * @return void
-   */
   static public function is_meal_planned($user_id, $recipe_id) {
     $sql = "SELECT * FROM " . static::$table_name . " WHERE user_id='" . $user_id . "' AND recipe_id='" . $recipe_id . "'";
     return static::find_by_sql($sql);
@@ -31,7 +26,10 @@ class mealplanner extends databaseobject{
   }
 
   static public function meal_planner_add($user_id, $recipe_id) {
-    $sql = "INSERT INTO " . static::$table_name . " (`user_id`, `recipe_id`) VALUES (" . $user_id . ", " . $recipe_id . ")";
-    return self::$database->query($sql);
+    $sql = self::$database->prepare("INSERT INTO " . static::$table_name . " (`user_id`, `recipe_id`) VALUES (?, ?)");
+    $sql->bind_param("ii", $user_id, $recipe_id);
+    $sql->execute();
+    $sql->close();
+    return TRUE;
   }
 }

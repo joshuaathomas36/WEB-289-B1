@@ -5,49 +5,78 @@
   $page_title = 'Show All Users: ';
   include(SHARED_PATH . '/admin-header.php'); 
   $session->verify_user_level();
+
+  $msg = "";
+  $string = "";
+  $msg = $session->message($string);
 ?>
 
-  <a class="back-link" href="index.php">&laquo; Back to List</a>
+<div id="wrapper">
+  <div id="form">
+    <nav>
+      <a href="index.php">&laquo; Back to List</a>
+    </nav>
 
-    <h1>Recipe: <?= h($recipe->name); ?></h1>
+    <?php if(!is_blank($msg)) { ?>
+      <p id="msg"><?= $msg; ?></p>
+    <?php } else {} ?>
 
-      <dl>
-        <dt>Recipe ID</dt>
-        <dd><?= h($recipe->recipe_id); ?></dd>
-      </dl>
-      <dl>
-      <dl>
-        <dt>Name</dt>
-        <dd><?= h($recipe->name); ?></dd>
-      </dl>
-      <dl>
-        <dt>Cook Time</dt>
-        <dd><?= h($recipe->cook_time); ?></dd>
-      </dl>
-      <dl>
-        <dt>Instructions</dt>
-        <?php
-          $steps = $recipe->instructions($recipe->instructions);
-          $i = 1;
-          foreach($steps as $step) { 
+    <h2>Recipe: <?= h($recipe->name); ?></h2>
+
+    <h3>Uploaded Image:</h3>
+    <?php $uploaded_image = uploadedimage::find_by_recipe_id($id); ?>
+    <img class="show-image" src="<?= url_for('uploaded-images/' . h($uploaded_image->uploaded_image)); ?>" alt="">
+
+
+      
+        <h3>Recipe ID:</h3>
+        <p><?= h($recipe->recipe_id); ?></p>
+      
+      <h3>Cook Time:</h3>
+      <p><?= h($recipe->cook_time); ?></p>
+
+      <h3>Amounts, Measurements, And Ingredients:</h3>
+      <?php 
+        $ingredients = ingredient::find_by_recipe_id($id);
+        foreach($ingredients as $ingredient) { 
+          $measurements = measurement::find_by_recipe_id($id, $ingredient->ingredient_id);
+          foreach($measurements as $measurement) {
+      ?>
+        <p><?= h($measurement->amount); ?> <?= h($measurement->measurement); }?> <?= h($ingredient->ingredient_name); ?></p>
+      <?php } ?>
+
+      <h3>Instructions:</h3>
+      <?php
+        $steps = $recipe->instructions($recipe->instructions);
+        $i = 1;
+        foreach($steps as $step) { 
+      ?>
+        <h4>Step <?= h($i++); ?></h4>
+        <p><?= h($step); ?></p>
+      <?php } ?>
+
+      <h3>Subcategory:</h3>
+      <?php
+        $subcategorys = subcategory::find_subcategory_name($recipe->subcategory_id);
+        foreach($subcategorys as $subcategory) {
+      ?>
+        <p><?= h($subcategory->subcategory_name); ?></p>
+      <?php } ?>
+
+      
+        <h3>Approved:</h3>
+        <p><?= h($recipe->approved($recipe->approved)); ?></p>
+
+        <h3>Cards Appearances:</h3>
+        <h4>General View</h4>
+        <?php 
+          $recipes = recipe::find_by_recipe_id_card($id); 
+          include(SHARED_PATH . '/recipes.php');
         ?>
-          <dd>Step <?= h($i++); ?> <?= h($step); ?></dd>
-        <?php } ?>
-      </dl>
-      <dl>
-        <dt>Subcategory</dt>
-        <?php $subcategorys = subcategory::find_subcategory_name($recipe->subcategory_id);
-          foreach($subcategorys as $subcategory) { ?>
-            <dd><?= h($subcategory->subcategory_name); ?></dd>
-          <?php } ?>
-      </dl>
-      <dl>
-        <dt>Approved</dt>
-        <dd><?= h($recipe->approved($recipe->approved)); ?></dd>
-      </dl>
-      <dl>
-    </div>
-
+        <h4>Member View</h4>
+        <?php include(SHARED_PATH . '/member-recipes.php'); ?>
+      
   </div>
-
 </div>
+
+<?php  include(SHARED_PATH . '/footer.php'); ?>

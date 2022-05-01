@@ -15,11 +15,6 @@ class uploadedimage extends databaseobject{
     $this->uploaded_image = $args['uploaded_image'] ?? '';
   }
 
-  /**
-   * find all approve recipes
-   *
-   * @return void
-   */
   static public function find_all() {
     $sql = "SELECT * FROM " . static::$table_name . "";
     return static::find_by_sql($sql);
@@ -37,7 +32,10 @@ class uploadedimage extends databaseobject{
   }
 
   static public function upload_image($recipe_id, $new_image_name) {
-    $sql = "INSERT INTO " . static::$table_name . " (`recipe_id`, `uploaded_image`) VALUES (" . $recipe_id . ", " . $new_image_name . ")";
-    return self::$database->query($sql);
+    $sql = self::$database->prepare("INSERT INTO " . static::$table_name . " (`recipe_id`, `uploaded_image`) VALUES (?, ?)");
+    $sql->bind_param("is", $recipe_id, $new_image_name);
+    $sql->execute();
+    $sql->close();
+    return TRUE;
   }
 }

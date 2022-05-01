@@ -61,7 +61,7 @@ class session {
   private function last_login_is_recent() {
     if(!isset($this->last_login)) {
       return false;
-    } elseif($this->last_login * self::MAX_LOGIN_AGE < time()) {
+    } elseif($this->last_login + self::MAX_LOGIN_AGE < time()) {
       return false; 
     } else {
       return true;
@@ -107,7 +107,7 @@ class session {
   if($_SESSION['user_level'] == 'S') {
     
   } elseif($_SESSION['user_level'] == 'A') {
-    redirect_to(url_for('//index.php'));
+    redirect_to(url_for('/admins/index.php'));
   } elseif($_SESSION['user_level'] == 'M') {
     redirect_to(url_for('/members/index.php'));
   } else {

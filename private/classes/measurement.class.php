@@ -15,13 +15,13 @@ class measurement extends databaseobject{
     $this->amount = $args['amount'] ?? '';
   }
 
-  /**
-   * find all approve recipes
-   *
-   * @return void
-   */
   static public function find_all_measurement() {
     $sql = "SELECT * FROM " . static::$table_name . "";
+    return static::find_by_sql($sql);
+  }
+
+  static public function find_by_measurement_name($measurement) {
+    $sql = "SELECT * FROM `measurement` WHERE measurement='" . $measurement . "'";
     return static::find_by_sql($sql);
   }
 

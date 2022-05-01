@@ -20,7 +20,7 @@ class user extends databaseobject{
     $this->email = $args['email'] ?? '';
   }
 
-      /**
+  /**
    * Checks whether there were any input errors and displays the according error message if there were
    *
    * @return void
@@ -35,5 +35,4 @@ class user extends databaseobject{
     }
     return $this->errors;
   }
-
 }

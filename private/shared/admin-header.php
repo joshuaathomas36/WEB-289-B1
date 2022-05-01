@@ -12,20 +12,11 @@
   <body>
 
     <header>
+      <?php if($session->is_logged_in()) { ?>
+          <p id="login"><a class="button" href="<?= url_for('login/logout.php'); ?>">Logout of <?= $session->username; ?></a></p>
+      <?php } else { redirect_to(url_for('login/login.php')); } ?>
       <h1>
         <a href="<?= url_for('admins/index.php'); ?>">Foody's Delight <img class="logo" src="<?= url_for('uploaded-images/fdr-logo.JPG') ?>" alt=""> Recipes</a>
       </h1>
       <h2>Admin's Area</h2>
     </header>
-
-    <navigation>
-      <ul>
-       <?php
-        if($session->is_logged_in()) { ?>
-            <li>User: <?= $session->username; ?></li>
-            <li><a href="<?= url_for('login/logout.php'); ?>">Logout</li>
-
-        <?php } else { redirect_to(url_for('login/login.php')); } ?>
-      </ul>
-    </navigation>
-  

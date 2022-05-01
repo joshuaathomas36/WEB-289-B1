@@ -4,6 +4,9 @@
   $id = $_GET['id'] ?? '';
   if(!is_blank($id)) {
     $recipe = recipe::find_by_recipe_id($id);
+    if($recipe == false){
+      redirect_to('index.php');
+    }
   }
  
 

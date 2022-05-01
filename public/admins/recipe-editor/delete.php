@@ -2,41 +2,47 @@
 
   require_once('../../../private/initialize.php');
 
-  $page_title = 'Delete Member'; 
+  $page_title = 'Delete Recipe'; 
   include(SHARED_PATH . '/admin-header.php'); 
   $session->verify_user_level();
 ?>
 
-  <a class="back-link" href="index.php">&laquo; Back to List</a>
+<div id="wrapper">
+  <div id="form">
+    <nav>
+      <a href="index.php">&laquo; Back to List</a>
+    </nav>
 
-<?php
-  if(!isset($_GET['id'])) {
-    redirect_to(url_for('/admins/members-editor/index.php'));
-  }
-  $id = $_GET['id'];
-  $member = member::find_by_id($id);
-  if($member == false) {
-    redirect_to(url_for('/admins/members-editor/index.php'));
-  }
+    <?php
+      if(!isset($_GET['id'])) {
+        redirect_to(url_for('/admins/recipe-editor/index.php'));
+      }
+      $id = $_GET['id'];
+      $recipe = recipe::find_by_recipe_id($id);
+      if($recipe == false) {
+        redirect_to(url_for('/admins/recipe-editor/index.php'));
+      }
 
-  if(is_post_request()) {
+      if(is_post_request()) {
 
-    // Delete admin
-    $result = $member->delete();
-    $_SESSION['message'] = 'The user was deleted successfully.';
-    redirect_to(url_for('/admins/members-editor/index.php'));
+        // Delete admin
+        $uploaded_image = uploadedimage::find_by_recipe_id($id);
+        $recipe->delete_recipe($id, $uploaded_image->uploaded_image);
+        $_SESSION['message'] = 'The recipe was deleted successfully.';
+        redirect_to(url_for('/admins/recipe-editor/index.php'));
 
-  } else { ?>
-    <h1>Delete Member</h1>
-    <p>Are you sure you want to delete this Member?</p>
-    <p><?= h($member->full_name()); ?></p>
-    
-    <form action="<?= url_for('/admins/members-editor/delete.php?id=' . h(u($id))); ?>" method="post">
-        <input type="submit" name="commit" value="Delete Member" />
-    </form>
-    
-  <?php } ?>
-
+      } else { ?>
+        <h1>Delete Recipe</h1>
+        <p>Are you sure you want to delete this Recipe?</p>
+        <p><?= h($recipe->name); ?></p>
+        
+        <form action="<?= url_for('/admins/recipe-editor/delete.php?id=' . h(u($id))); ?>" method="post">
+            <input type="submit" name="commit" value="Delete Recipe" />
+        </form>
+        
+    <?php } ?>
+  </div>
+</div>
   
 
 

@@ -2,16 +2,25 @@
   require_once('../../private/initialize.php'); 
   $id = $_GET['id'] ?? '1'; // PHP > 7.0
   $recipe = recipe::find_by_recipe_id($id);
+  if($recipe == false){
+    redirect_to('index.php');
+  }
+
   $page_title = '' . $recipe->name . '';
   include(SHARED_PATH . '/member-header.php');
   $id = $recipe->recipe_id;
   $rating = '';
   $review = '';
 
+  $approved = $recipe->approved($recipe->approved);
+  if($approved != "Yes"){
+    redirect_to('index.php');
+  }
+
   if(is_post_request()) {
 
     $rating = $_POST['rating'] ?? '';
-    $review = $_POST['review'] ?? '';
+    $review = strip_tags($_POST['review']) ?? '';
     $user_id = $session->user_id;
 
     if(!empty($rating)) {
@@ -38,15 +47,13 @@
 
     <h3>Ingredients you will need</h3>
     <?php 
-      $ingredients = ingredient::find_by_recipe_id($id);
-      foreach($ingredients as $ingredient) { 
-        $amounts = $measurements = measurement::find_by_recipe_id($id, $ingredient->ingredient_id);
-        $measurements = measurement::find_by_recipe_id($id, $ingredient->ingredient_id);
-        foreach($measurements as $measurement) {
-          foreach($amounts as $amount) {
-    ?>
-            <p><?= h($amount->amount); } ?> <?= h($measurement->measurement); }?> <?= h($ingredient->ingredient_name); ?></p>
-    <?php } ?>
+        $ingredients = ingredient::find_by_recipe_id($id);
+        foreach($ingredients as $ingredient) { 
+          $measurements = measurement::find_by_recipe_id($id, $ingredient->ingredient_id);
+          foreach($measurements as $measurement) {
+      ?>
+        <p><?= h($measurement->amount); ?> <?= h($measurement->measurement); }?> <?= h($ingredient->ingredient_name); ?></p>
+      <?php } ?>
 
     <h3>Instructions</h3>
     <?php

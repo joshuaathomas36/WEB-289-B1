@@ -31,7 +31,11 @@ class subcategory extends databaseobject{
   }
 
   static public function subcategory_add($subcategory_name) {
-    $sql = "INSERT INTO " . static::$table_name . " (`subcategory_name`) VALUES (" . $subcategory_name . ")";
-    return self::$database->query($sql);
+    $category_id = 1;
+    $sql = self::$database->prepare("INSERT INTO " . static::$table_name . " (`subcategory_name`, `category_id`) VALUES (?, ?)");
+    $sql->bind_param("si", $subcategory_name, $category_id);
+    $sql->execute();
+    $sql->close();
+    return TRUE;
   }
 }

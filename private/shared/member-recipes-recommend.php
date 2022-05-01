@@ -57,7 +57,7 @@
               $recommenders = $recommend->find_user($recommend->recommender_user_id);
               foreach($recommenders as $recommender) {
           ?>
-                <p class="recommender">Recommended By: <?= $recommender->username; ?></p>
+                <p class="recommender">Recommended By: <?= $recommender->email; ?></p>
           <?php }} ?>
           <form method="post">
             <input type="hidden" name="id" value="<?= $id ?>"  />

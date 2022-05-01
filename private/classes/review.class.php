@@ -20,11 +20,6 @@ class review extends databaseobject{
     $this->ratings = $args['ratings'] ?? '';
   }
 
-      /**
-   * find all approve recipes
-   *
-   * @return void
-   */
   static public function find_all_reviews($id) {
     $sql = "SELECT * FROM " . static::$table_name . " ";
     $sql .= "WHERE recipe_id='" . self::$database->escape_string($id) . "'";
@@ -60,7 +55,10 @@ class review extends databaseobject{
   }
 
   static public function review_add($user_id, $recipe_id, $rating, $review) {
-    $sql = "INSERT INTO " . static::$table_name . " (`user_id`, `recipe_id`, `rating`, `review`) VALUES (" . $user_id . ", " . $recipe_id . ", " . $rating . ", '" . $review . "')";
-    return self::$database->query($sql);
+    $sql = self::$database->prepare("INSERT INTO " . static::$table_name . " (`user_id`, `recipe_id`, `rating`, `review`) VALUES (?, ?, ?, ?)");
+    $sql->bind_param("iiis", $user_id, $recipe_id, $rating, $review);
+    $sql->execute();
+    $sql->close();
+    return TRUE;
   }
 }

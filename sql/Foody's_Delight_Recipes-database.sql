@@ -119,7 +119,7 @@ INSERT INTO `subcategory` (`subcategory_id`, `subcategory_name`, `category_id`) 
 
 INSERT INTO `recipe` (`recipe_id`, `name`, `cook_time`, `instructions`, `subcategory_id`, `approved`) VALUES 
 (1, 'Blueberry Pancakes', 60, '{"Step 1" : "Example text 1", "Step 2" : "Example text 2", "Step 3" : "Example text 3"}', 1, TRUE),
-(2, 'Spicy Grilled Cheese Sandwich', 5, '{"Step_1" : "Example text 1", "Step_2" : "Example text 2", "Step_3" : "Example text 3"}', 2, TRUE),
+(2, 'Spicy Grilled Cheese Sandwich', 5, '{"Step 1" : "Example text 1", "Step 2" : "Example text 2", "Step 3" : "Example text 3"}', 2, TRUE),
 (3, 'Spaghetti', 90, '{"Step 1": "Example text 1", "Step 2": "Example text 2", "Step 3": "Example text 3"}', 3, TRUE),
 (4, 'Applesauce Cooked Pork Loin', 90, '{"Step 1" : "Example text 1", "Step 2" : "Example text 2", "Step 3" : "Example text 3"}', 4, TRUE),
 (5, 'Triple Chocolate Cake', 120, '{"Step 1" : "Example text 1", "Step 2" : "Example text 2", "Step 3" : "Example text 3"}', 6, TRUE);

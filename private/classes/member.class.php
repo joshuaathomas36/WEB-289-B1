@@ -50,9 +50,7 @@ class member extends databaseobject {
     return parent::update();
   }
 
-
   // validate method for Admin class
-
   protected function validate() {
     $this->errors = [];
 

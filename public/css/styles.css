@@ -38,6 +38,7 @@ header {
 
 .button {
   border: 1px solid #000;
+  margin: 2px;
   padding: 10px;
 }
 
@@ -102,6 +103,7 @@ nav > a:hover {
   transition: top ease 0.1s;
   transition: left ease 0.1s;
   transition: box-shadow ease 0.4s;
+  text-align: left;
   top: 0;
   width: 300px;
 }
@@ -239,6 +241,13 @@ input {
   padding: 12px 20px;
 }
 
+select {
+  box-sizing: border-box;
+  margin: 0 0 20px 0;
+  padding: 12px 20px;
+  background-color: #fff;
+}
+
 label {
   font-weight: bold;
 }
@@ -255,8 +264,21 @@ textarea {
   background-color: rgba(0, 118, 209, 0.5);
   border: 1px solid #FFD977;
   border-radius: 30px;
-  box-shadow: 3px 3px 10px #000;
   margin: 0 50px;
   padding: 10px;
   text-align: center;
+}
+
+/****** Admin rules *****/
+.action {
+  color: #0076D1;
+}
+
+.action:hover {
+  text-decoration: underline #0076D1;
+}
+
+.admin-table {
+  margin: 0 auto;
+  text-align: left;
 }

@@ -53,7 +53,7 @@
         $member->check_user_level($user_level);
       } else {
         // username not found or password does not match
-        $errors[] = "No account found matching that username or password.";
+        $errors[] = "No account found matching that username or password. " . $new_id . "";
         $attempts++;
         $_SESSION['attempts'] = $attempts;
       }

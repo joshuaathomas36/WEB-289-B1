@@ -1,7 +1,7 @@
 <?php
   require_once('../../private/initialize.php');
   $msg = '';
-  //include(SHARED_PATH . '/member-submitrecipe-post.php');
+  include(SHARED_PATH . '/member-submitrecipe-post.php');
   $page_title = 'Submit a Recipe';
   include(SHARED_PATH . '/member-header.php');
 ?>
@@ -49,7 +49,17 @@
       ?>
         <span><?= $i; ?>.</span>
         <input id="amount" type="number" name="amount<?= $i; ?>" value="" />
-        <input id="measurement" type="text" name="measurement<?= $i; ?>" value="" list="measurements" />
+
+        <select id="measurement" name="measurement<?= $i; ?>">
+          <option value=""></option>
+          <?php 
+            $measurements = measurement::find_all_measurement();
+            foreach($measurements as $measurement) { 
+          ?>
+            <option value="<?= h($measurement->measurement_id); ?>"><?= h($measurement->measurement); ?></option>
+          <?php } ?>
+        </select>
+
         <input id="ingredient" type="text" name="ingredient<?= $i; ?>" value="" list="ingredients" /><br>
       <?php $i++; } ?>
       <datalist id="ingredients">
@@ -59,16 +69,6 @@
           foreach($ingredients as $ingredient) { 
         ?>
           <option><?= h($ingredient->ingredient_name); ?></option>
-        <?php } ?>
-      </datalist>
-
-      <datalist id="measurements">
-        <option></option>
-        <?php 
-          $measurements = measurement::find_all_measurement();
-          foreach($measurements as $measurement) { 
-        ?>
-          <option><?= h($measurement->measurement); ?></option>
         <?php } ?>
       </datalist><br>
 
