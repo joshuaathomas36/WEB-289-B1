@@ -12,7 +12,7 @@
 <div id="wrapper">
   <h2>Welcome To Your Account</h2>
   <?php if($_SESSION['user_level'] != 'M') { ?>
-    <p><a class="button" href="<?= url_for('/admins/index.php'); ?>">Admin's Area</a></p>
+    <p><a class="button" href="../admins/index.php">Admin's Area</a></p>
   <?php } ?>
 
   <?php if($_SESSION['user_level'] == 'S') { ?>

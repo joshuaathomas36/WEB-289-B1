@@ -57,13 +57,15 @@
 
       <h3>Subcategory:</h3>
       <?php
+      if($recipe->subcategory_id != 0) {
         $subcategorys = subcategory::find_subcategory_name($recipe->subcategory_id);
         foreach($subcategorys as $subcategory) {
       ?>
         <p><?= h($subcategory->subcategory_name); ?></p>
+      <?php }} else { ?>
+        <p>None</p>
       <?php } ?>
 
-      
         <h3>Approved:</h3>
         <p><?= h($recipe->approved($recipe->approved)); ?></p>
 

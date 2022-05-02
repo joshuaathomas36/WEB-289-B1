@@ -18,10 +18,19 @@
       <p id="msg"><?= $msg; ?></p>
     <?php } else {} ?>
 
-    <nav>
-      <a href="../members/account.php">Members Area</a>
+    <p><a class="button" href="../members/account.php">Members Area</a><br></p>
+    <nav class="flexbox">
       <a href="members-editor/index.php">Members Editor</a>
-      <a href="recipe-editor/index.php">Recipe Editor</a>
+      <a href="recipe-editor/index.php">Recipes Editor</a>
+      <a href="recipe-ingredient-editor/index.php">Recipe ingredients Editor</a>
+
+      <a href="measurement-editor/index.php">Measurement Editor</a>
+      <a href="ingredient-editor/index.php">Ingredient Editor</a>
+      <a href="uploaded-image-editor/index.php">Uploaded images Editor</a>
+
+      <a href="subcategory-editor/index.php">Subcategory Editor</a>
+      <a href="category-editor/index.php">Category Editor</a>
+      <a href="review-editor/index.php">Review Editor</a>
     </nav>
   </div>
 </div>

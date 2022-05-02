@@ -73,7 +73,7 @@ if(is_post_request()) {
 
   // Validations
   if(is_blank($img_name)) {
-    $errors[] = "Image cannot be blank.";
+    $errors[] = "There must be an image.";
   }
   if(is_blank($subcategory)) {
     $errors[] = "subcategory cannot be blank.";
@@ -106,7 +106,7 @@ if(is_post_request()) {
 
       if (in_array($img_ex_lc, $allowed_exs)) {
         $new_image_name = uniqid("IMG-", true) . '.' . $img_ex_lc;
-        $image_upload_path = '../uploaded-images/' . $new_image_name;
+        $image_upload_path = url_for('uploaded-images/' . $new_image_name);
         move_uploaded_file($tmp_name, $image_upload_path);
 
         // Insert into database
@@ -332,8 +332,8 @@ if(is_post_request()) {
           $recipe_ingredient->new_recipe_ingredient($new_id, $amount15, $measurement15, $ingredients15->ingredient_id);
         }
 
-        $uploadedimage = new uploadedimage;
-        $uploadedimage->upload_image($new_id, $new_image_name);
+        $uploaded_image = new uploadedimage;
+        $uploaded_image->upload_image($new_id, $new_image_name);
         $msg = 'Recipe has been successfully submitted!';
         $result = true;
 

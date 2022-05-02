@@ -34,7 +34,9 @@
       } else { ?>
         <h1>Delete Recipe</h1>
         <p>Are you sure you want to delete this Recipe?</p>
+        <h2>WARNING: This will remove all traces of this recipe and anything directly connected to it.</h2>
         <p><?= h($recipe->name); ?></p>
+        
         
         <form action="<?= url_for('/admins/recipe-editor/delete.php?id=' . h(u($id))); ?>" method="post">
             <input type="submit" name="commit" value="Delete Recipe" />

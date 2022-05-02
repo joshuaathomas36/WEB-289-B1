@@ -23,7 +23,7 @@
     <a class="action" href="<?= url_for('/admins/members-editor/new.php'); ?>">Create New Member</a>
     <table class="admin-table" border="1">
       <tr>
-        <th>ID</th>
+        <th>User ID</th>
         <th>Username</th>
         <th>Email</th>
         <th>User Level</th>

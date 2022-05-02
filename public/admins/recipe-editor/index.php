@@ -47,10 +47,10 @@
     <a class="action" href="new.php">Create New Recipe</a>
     <table class="admin-table" border="1">
       <tr>
-            <th>recipe_id</th>
-            <th>name</th>
-            <th>cook_time</th>
-            <th>approved</th>
+            <th>Recipe ID</th>
+            <th>Name</th>
+            <th>Cook Time</th>
+            <th>Approved</th>
             <th>&nbsp;</th>
             <th>&nbsp;</th>
             <th>&nbsp;</th>

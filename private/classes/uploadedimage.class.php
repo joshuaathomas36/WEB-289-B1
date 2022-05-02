@@ -38,4 +38,23 @@ class uploadedimage extends databaseobject{
     $sql->close();
     return TRUE;
   }
+
+  static public function find_uploaded_image_by_id($id) {
+    $sql = "SELECT * FROM " . static::$table_name . " ";
+    $sql .= "WHERE uploaded_image_id='" . self::$database->escape_string($id) . "'";
+    $obj_array = static::find_by_sql($sql);
+    if(!empty($obj_array)) {
+      return array_shift($obj_array);
+    } else {
+      return false;
+    }
+  }
+
+  static public function replace_uploaded_image($id, $uploaded_image) {
+    $sql = self::$database->prepare("UPDATE " . static::$table_name . " SET uploaded_image=? WHERE uploaded_image_id=?");
+    $sql->bind_param("si", $uploaded_image, $id);
+    $sql->execute();
+    $sql->close();
+    return TRUE;
+  }
 }

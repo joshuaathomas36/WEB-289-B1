@@ -61,4 +61,21 @@ class review extends databaseobject{
     $sql->close();
     return TRUE;
   }
+
+  static public function find_review_by_id($id) {
+    $sql = "SELECT * FROM " . static::$table_name . " ";
+    $sql .= "WHERE review_id='" . self::$database->escape_string($id) . "'";
+    $obj_array = static::find_by_sql($sql);
+    if(!empty($obj_array)) {
+      return array_shift($obj_array);
+    } else {
+      return false;
+    }
+  }
+
+  static public function delete_review($id) {
+    $sql = "DELETE FROM " . static::$table_name . " WHERE review_id='" . $id . "'";
+    self::$database->query($sql);
+    return true;
+  }
 }

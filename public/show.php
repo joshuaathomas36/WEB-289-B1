@@ -56,11 +56,11 @@
         $user = member::find_username_by_id($review->user_id);
     ?>
       <div class="review">
-        <p><?= h($user->username); ?></p>
-        <div class="show-rating"><?= $reviews_rating->stars($reviews_rating->ratings); ?></div>
+      <p><?= h($user->username); ?></p>
+        <div class="show-rating"><?= $review->stars($review->rating); ?></div>
         <?php if(!empty($review->review)) { ?>
           <p><?= h($review->review); ?></p>
-        <?php } else {} ?>
+        <?php } ?>
       </div>
     <?php } ?>
   </div>

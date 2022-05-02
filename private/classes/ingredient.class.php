@@ -18,6 +18,17 @@ class ingredient extends databaseobject{
     return static::find_by_sql($sql);
   }
 
+  static public function find_ingredient_by_id($id) {
+    $sql = "SELECT * FROM " . static::$table_name . " ";
+    $sql .= "WHERE ingredient_id='" . self::$database->escape_string($id) . "'";
+    $obj_array = static::find_by_sql($sql);
+    if(!empty($obj_array)) {
+      return array_shift($obj_array);
+    } else {
+      return false;
+    }
+  }
+
   static public function find_by_recipe_id($id) {
     $sql = "SELECT * FROM " . static::$table_name . " AS i RIGHT JOIN `recipe_ingredient` AS ri ON ( i.ingredient_id = ri.ingredient_id ) WHERE ri.recipe_id='" . $id . "'";
     return static::find_by_sql($sql);
@@ -34,5 +45,25 @@ class ingredient extends databaseobject{
     $sql->execute();
     $sql->close();
     return TRUE;
+  }
+
+  static public function update_ingredient($id, $ingredient_name) {
+    $sql = self::$database->prepare("UPDATE " . static::$table_name . " SET ingredient_name=? WHERE ingredient_id=?");
+    $sql->bind_param("si", $ingredient_name, $id);
+    $sql->execute();
+    $sql->close();
+    return TRUE;
+  }
+
+  static public function delete_ingredient($id) {
+    $new_ingredient_id = 1;
+    $sql = self::$database->prepare("UPDATE recipe_ingredient SET ingredient_id=? WHERE ingredient_id=?");
+    $sql->bind_param("ii", $new_ingredient_id, $id);
+    $sql->execute();
+    $sql->close();
+
+    $sql = "DELETE FROM " . static::$table_name . " WHERE ingredient_id='" . $id . "'";
+    self::$database->query($sql);
+    return true;
   }
 }

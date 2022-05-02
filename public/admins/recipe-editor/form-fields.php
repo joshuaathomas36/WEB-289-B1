@@ -6,7 +6,11 @@
   }
   $session->verify_user_level();
   $subcategorys = subcategory::find_all_subcategory_names();
-  $sub_names = subcategory::find_subcategory_name($recipe->subcategory_id) ?? '';
+  if($recipe->subcategory_id != 0) {
+    $sub_names = subcategory::find_subcategory_name($recipe->subcategory_id) ?? '';
+  } else {
+    $sub_names = '';
+  }
 ?>
 
 <?= display_errors($recipe->errors); ?>
