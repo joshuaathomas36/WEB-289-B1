@@ -27,9 +27,9 @@
         <th>Username</th>
         <th>Email</th>
         <th>User Level</th>
-        <th>&nbsp;</th>
-        <th>&nbsp;</th>
-        <th>&nbsp;</th>
+        <th>View</th>
+        <th>Edit</th>
+        <th>Delete</th>
       </tr>
 
       <?php foreach($members as $member) { ?>

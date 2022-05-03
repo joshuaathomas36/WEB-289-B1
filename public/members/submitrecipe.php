@@ -8,14 +8,15 @@
 
 <div id="wrapper">
   <div id="form">
-    <?= $msg ?>
     <h2>Submit a Recipe</h2>
     <h3>Currently not available</h3>
 
     <?php $recipe = new recipe; ?>
     <?php $subcategorys = subcategory::find_all_subcategory_names(); ?>
     <?= display_errors($recipe->errors); ?>
-    <?= $msg; ?>
+    <?php if(!is_blank($msg)) { ?>
+    <p id="msg"><?= $msg; ?></p>
+    <?php } else {} ?>
 
     <form method="post" enctype="multipart/form-data">
       <label for="image">Image</label><br>

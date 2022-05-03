@@ -31,8 +31,13 @@ class member extends databaseobject {
     return $this->first_name . " " . $this->last_name;
   }
 
-  protected function set_hashed_password() {
+  public function set_hashed_password() {
     $this->password = password_hash($this->password, PASSWORD_BCRYPT);
+  }
+
+  public function create_hashed_password($password) {
+    $password = password_hash($password, PASSWORD_BCRYPT);
+    return $password;
   }
 
   public function verify_password($pass) {
@@ -159,6 +164,14 @@ class member extends databaseobject {
     }
   }
 
+  static public function update_user($user_id, $username, $password, $user_level, $first_name, $last_name, $email) {
+    $sql = self::$database->prepare("UPDATE " . static::$table_name . " SET username=?, password=?, user_level=?, first_name=?, last_name=?, email=? WHERE user_id=?");
+    $sql->bind_param("ssssssi", $username, $password, $user_level, $first_name, $last_name, $email, $user_id);
+    $sql->execute();
+    $sql->close();
+    return true;
+  }
+
   static public function delete_user($id) {
     $sql = "DELETE FROM meal_planner WHERE user_id='" . $id . "'";
     self::$database->query($sql);
@@ -180,5 +193,4 @@ class member extends databaseobject {
 
     return true;
   }
-
 }

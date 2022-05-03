@@ -25,8 +25,8 @@
         <th>Uploaded Image ID</th>
         <th>Recipe</th>
         <th>Uploaded Image</th>
-        <th>&nbsp;</th>
-        <th>&nbsp;</th>
+        <th>View</th>
+        <th>Replace</th>
       </tr>
 
       <?php

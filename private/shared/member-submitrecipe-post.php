@@ -97,8 +97,8 @@ if(is_post_request()) {
   // Submit
   if(empty($errors)) {
     // Images
-    if ($img_size > 125000) {
-      $msg = "Sorry, your Image is too large of a file.";
+    if ($img_size > 2097152) {
+      $msg = "Sorry, your Image is too large of a file, the image must below 2MB.";
     } else {
       $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
       $img_ex_lc = strtolower($img_ex);
@@ -106,12 +106,18 @@ if(is_post_request()) {
 
       if (in_array($img_ex_lc, $allowed_exs)) {
         $new_image_name = uniqid("IMG-", true) . '.' . $img_ex_lc;
-        $image_upload_path = url_for('uploaded-images/' . $new_image_name);
+
+        if(!empty($admin_upload)) {
+          $image_upload_path = '../../uploaded-images/' . $new_image_name;
+        } else {
+          $image_upload_path = '../uploaded-images/' . $new_image_name;
+        }
+
         move_uploaded_file($tmp_name, $image_upload_path);
 
         // Insert into database
-        $subcategorys = subcategory::find_by_subcategory_name($subcategory);
-        if(empty($subcategorys)) {
+        $subcategorys = subcategory::find_subcategory_by_name($subcategory);
+        if($subcategorys == false) {
           $subcategorys = new subcategory;
           $subcategorys->subcategory_add($subcategory);
           $subcategorys = subcategory::find_by_subcategory_name($subcategory);

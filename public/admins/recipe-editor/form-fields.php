@@ -7,15 +7,11 @@
   $session->verify_user_level();
   $subcategorys = subcategory::find_all_subcategory_names();
   if($recipe->subcategory_id != 0) {
-    $sub_names = subcategory::find_subcategory_name($recipe->subcategory_id) ?? '';
+    $sub_name = subcategory::find_by_subcategory_id($recipe->subcategory_id) ?? '';
   } else {
-    $sub_names = '';
+    $sub_name = '';
   }
 ?>
-
-<?= display_errors($recipe->errors); ?>
-
-<form method="post" enctype="multipart/form-data">
 
   <?php
     $uploaded_image = uploadedimage::find_by_recipe_id($recipe->recipe_id);
@@ -28,13 +24,9 @@
   <?php } ?> 
 
   <label for="subcategory">Subcategory</label><br>
-  <?php 
-    if(!empty($sub_names)) {
-      foreach($sub_names as $sub_name) {
-  ?>
+  <?php if(!empty($sub_name)) { ?>
     <input id="subcategory" type="text" name="subcategory" value="<?= h($sub_name->subcategory_name); ?>" list="subcategorys" />
   <?php 
-      }
     } else {
   ?>
     <input id="subcategory" type="text" name="subcategory" value="" list="subcategorys" />
@@ -58,7 +50,6 @@
   <label for="measurement">Measurement&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
 
   <label for="ingredient">Ingredients</label><br>
-  <p class="clarifying">Not all boxes below have to be filled in. If the recipe requires more then fifteen ingredients please email the recipe.</p>
 
     <?php
       $i = 1;
@@ -90,7 +81,6 @@
   </datalist><br>
 
   <label for="instructions">Instructions</label>
-  <p class="clarifying">Not all boxes below have to be filled in. If the recipe requires more then five steps please email the recipe.</p>
   <?php 
     $steps = $recipe->admin_instructions($recipe->instructions);
     $step1 = $steps["Step 1"] ?? '';

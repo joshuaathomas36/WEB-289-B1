@@ -120,7 +120,7 @@ class databaseobject{
     }
     $sql = "UPDATE " . static::$table_name . " SET ";
     $sql .= join(', ', $attribute_pairs);
-    $sql .= " WHERE id='" . self::$database->escape_string($this->id) . "' ";
+    $sql .= " WHERE user_id='" . self::$database->escape_string($this->id) . "' ";
     $sql .= "LIMIT 1";
     $result = self::$database->query($sql);
     return $result;

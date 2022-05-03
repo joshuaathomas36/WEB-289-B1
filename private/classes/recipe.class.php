@@ -55,7 +55,7 @@ class recipe extends databaseobject{
   }
 
   static public function find_by_category($cat_id) {
-    $sql = "SELECT * FROM `recipe` AS r LEFT JOIN `subcategory` AS s ON ( r.subcategory_id = s.subcategory_id ) WHERE s.category_id='" . $cat_id . "'";
+    $sql = "SELECT * FROM `recipe` AS r LEFT JOIN `subcategory` AS s ON ( r.subcategory_id = s.subcategory_id ) WHERE s.category_id='" . $cat_id . "' AND r.approved='1'";
     return static::find_by_sql($sql);
   }
 
@@ -139,7 +139,7 @@ class recipe extends databaseobject{
     $sql = "DELETE FROM recipe_ingredient WHERE recipe_id='" . $id . "'";
     self::$database->query($sql);
 
-    $sql = "DELETE FROM recommended WHERE recipe_id='" . $id . "'";
+    $sql = "DELETE FROM recommended WHERE recommended_recipe_id='" . $id . "'";
     self::$database->query($sql);
 
     $path = 'uploaded-images/' . $image;

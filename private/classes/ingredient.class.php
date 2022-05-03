@@ -35,8 +35,14 @@ class ingredient extends databaseobject{
   }
 
   static public function find_by_ingredient_name($name) {
-    $sql = "SELECT * FROM " . static::$table_name . " WHERE ingredient_name='" . $name . "'";
-    return static::find_by_sql($sql);
+    $sql = "SELECT * FROM " . static::$table_name . " ";
+    $sql .= "WHERE ingredient_name='" . self::$database->escape_string($name) . "'";
+    $obj_array = static::find_by_sql($sql);
+    if(!empty($obj_array)) {
+      return array_shift($obj_array);
+    } else {
+      return '';
+    }
   }
 
   static public function new_ingredient($name) {

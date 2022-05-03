@@ -27,7 +27,7 @@
     <?php } else {} ?>
 
     <h2>Uploaded Image ID: <?= h($uploaded_image->uploaded_image_id); ?></h2>
-    <h2>Recipe ID: <?= h($recipe->name); ?></h2>
+    <h2>Recipe: <?= h($recipe->name); ?></h2>
     <h2>Uploaded Image: <?= h($uploaded_image->uploaded_image); ?></h2>
     <img class="show-image" src="<?= url_for('uploaded-images/' . h($uploaded_image->uploaded_image)); ?>" alt="">
 

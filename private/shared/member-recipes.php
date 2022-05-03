@@ -10,10 +10,8 @@
           <!-- uploaded_image End -->
 
           <!-- subcategory Start -->
-          <?php $subcategorys = subcategory::find_subcategory_name($recipe->subcategory_id); ?>
-          <?php foreach($subcategorys as $subcategory) { ?>
+          <?php $subcategory = subcategory::find_by_subcategory_id($recipe->subcategory_id); ?>
           <section class="sub"><?= h($subcategory->subcategory_name); ?></section>
-          <?php } ?>
           <!-- subcategory End -->
 
           <!-- others Start -->

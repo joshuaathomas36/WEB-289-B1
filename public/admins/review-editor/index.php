@@ -26,8 +26,8 @@
         <th>User</th>
         <th>Recipe</th>
         <th>Rating</th>
-        <th>&nbsp;</th>
-        <th>&nbsp;</th>
+        <th>View</th>
+        <th>Delete</th>
       </tr>
 
       <?php

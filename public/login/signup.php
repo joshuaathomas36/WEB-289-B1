@@ -40,29 +40,21 @@
       <label for="first_name">First name</label><br>
       <input id="first_name" type="text" name="member[first_name]" value="<?= h($member->first_name); ?>" required /><br>
 
-    
       <label for="last_name">Last name</label><br>
       <input id="last_name" type="text" name="member[last_name]" value="<?= h($member->last_name); ?>" required /><br>
 
-  
       <label for="email">Email</label><br>
       <input id="email" type="text" name="member[email]" value="<?= h($member->email); ?>" required /><br>
-    
-
  
       <label for="username">Username</label><br>
       <input id="username" type="text" name="member[username]" value="<?= h($member->username); ?>" required /><br>
    
-
-   
       <label for="password">Password</label><br>
       <input id="password" type="password" name="member[password]" value="" required /><br>
 
-    
       <label for="confirm_password">Confirm Password</label><br>
       <input id="confirm_password" type="password" name="member[confirm_password]" value="" required /><br>
     
-
       <div id="operations">
         <input type="submit" value="Sign up!" />
       </div>

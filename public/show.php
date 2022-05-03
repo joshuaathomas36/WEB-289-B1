@@ -31,13 +31,13 @@
 
     <h3>Ingredients you will need</h3>
     <?php 
-        $ingredients = ingredient::find_by_recipe_id($id);
-        foreach($ingredients as $ingredient) { 
-          $measurements = measurement::find_by_recipe_id($id, $ingredient->ingredient_id);
-          foreach($measurements as $measurement) {
-      ?>
-        <p><?= h($measurement->amount); ?> <?= h($measurement->measurement); }?> <?= h($ingredient->ingredient_name); ?></p>
-      <?php } ?>
+      $ingredients = ingredient::find_by_recipe_id($id);
+      foreach($ingredients as $ingredient) { 
+        $measurements = measurement::find_by_recipe_id($id, $ingredient->ingredient_id);
+        foreach($measurements as $measurement) {
+    ?>
+      <p><?= h($measurement->amount); ?> <?= h($measurement->measurement); }?> <?= h($ingredient->ingredient_name); ?></p>
+    <?php } ?>
 
     <h3>Instructions</h3>
     <?php

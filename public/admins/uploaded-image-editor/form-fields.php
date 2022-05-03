@@ -9,4 +9,4 @@
 
     <img class="show-image" src="<?= url_for('uploaded-images/' . h($uploaded_image->uploaded_image)); ?>" alt=""><br>
     <label for="image">New Image</label><br>
-    <input id="image" type="file" name="new_image"><br>
+    <input id="image" type="file" name="my_image"><br>

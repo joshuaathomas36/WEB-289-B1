@@ -51,7 +51,7 @@
     <p><?= h($recipe->approved($recipe->approved)); ?></p>
 
     <h3>Change approved status?</h3>
-    <form action="approve.php" method="post">
+    <form action="approve.php?id=<?= $id ?>" method="post">
       <input type="submit" name="submit" value="Change approved status."  />
     </form>
     

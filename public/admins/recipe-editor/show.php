@@ -56,27 +56,20 @@
       <?php } ?>
 
       <h3>Subcategory:</h3>
-      <?php
-      if($recipe->subcategory_id != 0) {
-        $subcategorys = subcategory::find_subcategory_name($recipe->subcategory_id);
-        foreach($subcategorys as $subcategory) {
+      <?php $subcategory = subcategory::find_by_subcategory_id($recipe->subcategory_id); ?>
+      <p><?= h($subcategory->subcategory_name); ?></p>
+
+      <h3>Approved:</h3>
+      <p><?= h($recipe->approved($recipe->approved)); ?></p>
+
+      <h3>Cards Appearances:</h3>
+      <h4>General View</h4>
+      <?php 
+        $recipes = recipe::find_by_recipe_id_card($id); 
+        include(SHARED_PATH . '/recipes.php');
       ?>
-        <p><?= h($subcategory->subcategory_name); ?></p>
-      <?php }} else { ?>
-        <p>None</p>
-      <?php } ?>
-
-        <h3>Approved:</h3>
-        <p><?= h($recipe->approved($recipe->approved)); ?></p>
-
-        <h3>Cards Appearances:</h3>
-        <h4>General View</h4>
-        <?php 
-          $recipes = recipe::find_by_recipe_id_card($id); 
-          include(SHARED_PATH . '/recipes.php');
-        ?>
-        <h4>Member View</h4>
-        <?php include(SHARED_PATH . '/member-recipes.php'); ?>
+      <h4>Member View</h4>
+      <?php include(SHARED_PATH . '/member-recipes.php'); ?>
       
   </div>
 </div>

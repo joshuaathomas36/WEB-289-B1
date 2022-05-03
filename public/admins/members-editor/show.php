@@ -30,7 +30,6 @@
     <?php } else {} ?>
 
     <h2>Member: <?= h($member->full_name()); ?></h2>
-
       
         <h3>User ID:</h3>
         <p><?= h($member->user_id); ?></p>

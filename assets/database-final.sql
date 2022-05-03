@@ -1,3 +1,9 @@
+-- Username: admintester
+-- Password: Jj*6P0E5tv&D
+
+-- Username: membertester
+-- Password: 47CRCyJ%bXog
+
 DROP DATABASE IF EXISTS `joshuaat_delight`;
 CREATE DATABASE IF NOT EXISTS `joshuaat_delight`;
 USE `joshuaat_delight`;

@@ -3,6 +3,8 @@
   $page_title = 'Edit Recipe'; 
   include(SHARED_PATH . '/admin-header.php');
   $session->verify_user_level();
+  $result = '';
+  $errors = [];
 ?>
 
 <div id="wrapper">
@@ -23,28 +25,21 @@
         redirect_to(url_for('/admins/recipe-editor/index.php'));
       }
 
+      include(SHARED_PATH . '/admin-update-recipe-post.php');
 
-      if(is_post_request()) {
-
-        // Save record using post parameters
-        include(SHARED_PATH . '/admin-update-recipe-post.php');
-
-        if($result === true) {
-          $_SESSION['message'] = 'The recipe was updated successfully.';
-          redirect_to(url_for('/admins/recipe-editor/show.php?id=' . $id));
-        } else {
-          // show errors
-          display_errors($member->errors);
-        }
-
+      if($result === true) {
+        $_SESSION['message'] = 'The recipe was updated successfully.';
+        redirect_to(url_for('/admins/recipe-editor/show.php?id=' . $id));
       } else {
+        // show errors
+        display_errors($errors);
+      }
     ?>
       
-      <form action="<?= url_for('/admins/recipe-editor/edit.php?id=' . h(u($id))); ?>" method="post">
+      <form action="<?= url_for('/admins/recipe-editor/edit.php?id=' . h(u($id))); ?>" method="post" enctype="multipart/form-data">
         <?php include('form-fields.php'); ?>
         <input type="submit" value="Edit Recipe" />
       </form>
-    <?php } ?>
   </div>
 </div>
 

@@ -18,7 +18,13 @@
       <p id="msg"><?= $msg; ?></p>
     <?php } else {} ?>
 
-    <p><a class="button" href="../members/account.php">Members Area</a><br></p>
+    <p>
+      <a class="button" href="../members/account.php">Members Area</a>
+      <?php if($_SESSION['user_level'] == 'S') { ?>
+        <a class="button" href="<?= url_for('/super-admins/index.php'); ?>">Super Admin's Area</a><br>
+      <?php } ?>
+    </p>
+
     <nav class="flexbox">
       <a href="members-editor/index.php">Members Editor</a>
       <a href="recipe-editor/index.php">Recipes Editor</a>

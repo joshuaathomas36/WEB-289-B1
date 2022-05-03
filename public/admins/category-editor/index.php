@@ -25,9 +25,9 @@
       <tr>
         <th>Category ID</th>
         <th>Category Name</th>
-        <th>&nbsp;</th>
-        <th>&nbsp;</th>
-        <th>&nbsp;</th>
+        <th>View</th>
+        <th>Edit</th>
+        <th>Delete</th>
       </tr>
 
       <?php foreach($categories as $category) { ?>

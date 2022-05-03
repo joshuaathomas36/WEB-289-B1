@@ -30,8 +30,8 @@
         $tmp_name = $_FILES['my_image']['tmp_name'] ?? '';
         $error = $_FILES['my_image']['error'] ?? '';
 
-        if ($img_size > 125000) {
-          $msg = "Sorry, your Image is too large of a file.";
+        if ($img_size > 2097152) {
+          $msg = "Sorry, your Image is too large of a file, it must be under 2MB.";
         } else {
           $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
           $img_ex_lc = strtolower($img_ex);
@@ -39,8 +39,11 @@
     
           if (in_array($img_ex_lc, $allowed_exs)) {
             $new_image_name = uniqid("IMG-", true) . '.' . $img_ex_lc;
-            $image_upload_path = url_for('uploaded-images/' . $new_image_name);
+            $image_upload_path = '../../uploaded-images/' . $new_image_name;
             move_uploaded_file($tmp_name, $image_upload_path);
+
+            $path = 'uploaded-images/' . $uploaded_image->uploaded_image;
+            unlink(url_for($path));
 
             $new_uploaded_image = new uploadedimage;
             $new_uploaded_image->replace_uploaded_image($uploaded_image->uploaded_image_id, $new_image_name);
@@ -52,21 +55,20 @@
         }
 
         if($result === true) {
-          $_SESSION['message'] = 'The new image has replace the old one successfully.';
+          $_SESSION['message'] = 'The new image has replaced the old one successfully.';
           redirect_to(url_for('/admins/uploaded-image-editor/show.php?id=' . $id));
         } else {
           // show errors
           display_errors($uploaded_image->errors);
         }
 
-      } else {
+      }
     ?>
       
-      <form action="<?= url_for('/admins/uploaded-image-editor/edit.php?id=' . h(u($id))); ?>" method="post">
+      <form action="<?= url_for('/admins/uploaded-image-editor/replace.php?id=' . h(u($id))); ?>" method="post" enctype="multipart/form-data">
         <?php include('form-fields.php'); ?>
         <input type="submit" value="Replace Uploaded Image" />
       </form>
-    <?php } ?>
   </div>
 </div>
 

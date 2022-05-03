@@ -47,26 +47,26 @@
     <a class="action" href="new.php">Create New Recipe</a>
     <table class="admin-table" border="1">
       <tr>
-            <th>Recipe ID</th>
-            <th>Name</th>
-            <th>Cook Time</th>
-            <th>Approved</th>
-            <th>&nbsp;</th>
-            <th>&nbsp;</th>
-            <th>&nbsp;</th>
-            <th>&nbsp;</th>
-          </tr>
+        <th>Recipe ID</th>
+        <th>Name</th>
+        <th>Cook Time</th>
+        <th>Approved</th>
+        <th>View</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>Approve</th>
+      </tr>
 
-          <?php foreach($recipes as $recipe) { ?>
-            <tr>
-              <td><?= h($recipe->recipe_id); ?></td>
-              <td><?= h($recipe->name); ?></td>
-              <td><?= h($recipe->cook_time); ?></td>
-              <td><?= h($recipe->approved($recipe->approved)); ?></td>
-              <td><a class="action" href="<?= url_for('admins/recipe-editor/show.php?id=' . h(u($recipe->recipe_id))); ?>">View</a></td>
-              <td><a class="action" href="<?= url_for('admins/recipe-editor/edit.php?id=' . h(u($recipe->recipe_id))); ?>">Edit</a></td>
-              <td><a class="action" href="<?= url_for('admins/recipe-editor/approve.php?id=' . h(u($recipe->recipe_id))); ?>">Approve</a></td>
-              <td><a class="action" href="<?= url_for('admins/recipe-editor/delete.php?id=' . h(u($recipe->recipe_id))); ?>">Delete</a></td>
+      <?php foreach($recipes as $recipe) { ?>
+        <tr>
+          <td><?= h($recipe->recipe_id); ?></td>
+          <td><?= h($recipe->name); ?></td>
+          <td><?= h($recipe->cook_time); ?></td>
+          <td><?= h($recipe->approved($recipe->approved)); ?></td>
+          <td><a class="action" href="<?= url_for('admins/recipe-editor/show.php?id=' . h(u($recipe->recipe_id))); ?>">View</a></td>
+          <td><a class="action" href="<?= url_for('admins/recipe-editor/edit.php?id=' . h(u($recipe->recipe_id))); ?>">Edit</a></td>
+          <td><a class="action" href="<?= url_for('admins/recipe-editor/approve.php?id=' . h(u($recipe->recipe_id))); ?>">Approve</a></td>
+          <td><a class="action" href="<?= url_for('admins/recipe-editor/delete.php?id=' . h(u($recipe->recipe_id))); ?>">Delete</a></td>
         <?php } ?>
         </tr>
     </table>

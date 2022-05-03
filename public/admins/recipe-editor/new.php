@@ -1,22 +1,15 @@
 <?php
-
   require_once('../../../private/initialize.php');
+  $msg = "";
+  $admin_upload = 'Y';
+  $result = '';
+  $errors = [];
+  include(SHARED_PATH . '/member-submitrecipe-post.php');
 
-  if(is_post_request()) {
-
-    // Create record using post parameters
-    
-    include(SHARED_PATH . '/member-submitrecipe-post.php');
-
-    if($result === true) {
-      $_SESSION['message'] = 'The recipe was created successfully.';
-      redirect_to(url_for('admins/recipe-editor/show.php?id=' . $new_id));
-    } else {
-      // show errors
-    }
-
+  if($result == true) {
+    $_SESSION['message'] = 'The recipe was created successfully.';
+    redirect_to(url_for('admins/recipe-editor/show.php?id=' . $new_id));
   } else {
-    // display the form
     $recipe = new recipe;
   }
 
@@ -30,12 +23,15 @@
     <nav>
       <a href="index.php">&laquo; Back to List</a>
     </nav>
+    <?php if(!is_blank($msg)) { ?>
+      <p id="msg"><?= $msg; ?></p>
+    <?php } else {} ?>
 
     <h2>Create Recipe</h2>
 
-    <?=display_errors($recipe->errors); ?>
+    <?=display_errors($errors); ?>
 
-    <form action="<?=url_for('admins/recipe-editor/new.php'); ?>" method="post">
+    <form action="<?=url_for('admins/recipe-editor/new.php'); ?>" method="post" enctype="multipart/form-data">
 
       <?php include('form-fields.php'); ?>
 

@@ -25,9 +25,9 @@
       <tr>
         <th>Ingredient ID</th>
         <th>Ingredient</th>
-        <th>&nbsp;</th>
-        <th>&nbsp;</th>
-        <th>&nbsp;</th>
+        <th>View</th>
+        <th>Edit</th>
+        <th>Delete</th>
       </tr>
 
       <?php foreach($ingredients as $ingredient) { ?>

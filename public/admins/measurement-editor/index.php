@@ -25,9 +25,9 @@
       <tr>
         <th>Measurement ID</th>
         <th>Measurement</th>
-        <th>&nbsp;</th>
-        <th>&nbsp;</th>
-        <th>&nbsp;</th>
+        <th>View</th>
+        <th>Edit</th>
+        <th>Delete</th>
       </tr>
 
       <?php foreach($measurements as $measurement) { ?>

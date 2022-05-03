@@ -7,7 +7,7 @@
 ?>
 
 <div id="wrapper">
-  <h2>Welcome to Dessert Page</h2>
+  <h2>Welcome to the Dessert Page</h2>
 
   <?php include(SHARED_PATH . '/recipes.php'); ?>
 

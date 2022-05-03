@@ -69,8 +69,8 @@
     <div class="review">
     <h4>Tried it? Why not leave a review!</h4>
       <form method="post">
-        Rating:<br>
-        <select name="rating">
+        <label for="rating">Rating:</label><br>
+        <select id="rating" name="rating">
           <?php 
             $is = array(5, 4, 3, 2, 1);
             foreach($is as $i) { 
@@ -79,8 +79,8 @@
           <?php } ?>
           </select><br>
 
-        Review:<br>
-        <textarea name="review" value="<?= h($review); ?>"></textarea><br>
+        <label for="review">Review:</label><br>
+        <textarea id="review" name="review" value="<?= h($review); ?>"></textarea><br>
         <input type="submit" name="submit" value="Submit"  />
       </form>
     </div><br>
